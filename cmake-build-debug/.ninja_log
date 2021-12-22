@@ -1,0 +1,6 @@
+# ninja log v5
+33	1065	6618595847964909	CMakeFiles/log.dir/log/main.cpp.obj	b19a70fe5a35de6e
+0	1719	6618595854446267	CMakeFiles/log.dir/log/log.cpp.obj	c7793903a86d5564
+1720	2167	6618595858934897	log.exe	d0bef250f25bc563
+3	954	6618596270754773	CMakeFiles/log.dir/log/main.cpp.obj	b19a70fe5a35de6e
+955	1367	6618596275394766	log.exe	d0bef250f25bc563

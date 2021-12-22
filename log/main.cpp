@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     for (int i = 0; i < 10; i++) {
         Log::LogEventWrap(Log::LogEvent::ptr(new Log::LogEvent(logger, Log::LogLevel::INFO, "mian.cpp", 21, 66, 0, 0, time(0), "main"))).getSS() << "hello world";
     }
-
+    std::cout <<"is right ?"<<std::endl;
     return 0;
 
 }
