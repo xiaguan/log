@@ -144,6 +144,9 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "J:/Tools/apps/CLion/ch-0/213.5744.254/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"path" : "log/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

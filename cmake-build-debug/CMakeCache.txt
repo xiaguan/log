@@ -151,7 +151,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=log
+CMAKE_PROJECT_NAME:STATIC=logexample
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/Users/75108/Desktop/x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0/mingw64/bin/ranlib.exe
@@ -241,6 +241,15 @@ log_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 log_SOURCE_DIR:STATIC=J:/log
+
+//Value Computed by CMake
+logexample_BINARY_DIR:STATIC=J:/log/cmake-build-debug
+
+//Value Computed by CMake
+logexample_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+logexample_SOURCE_DIR:STATIC=J:/log
 
 
 ########################
@@ -345,7 +354,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

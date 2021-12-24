@@ -1,11 +1,10 @@
 cmake_minimum_required(VERSION 3.21)
-project(log)
+project(logexample)
 
-set(CMAKE_CXX_STANDARD 14)
 
-include_directories(log)
+add_subdirectory(log)
 
-add_executable(log
-        log/log.cpp
-        log/log.h
-        log/main.cpp)
+add_executable(logexample main.cpp)
+
+target_link_libraries(logexample Log)
+

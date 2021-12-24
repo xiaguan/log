@@ -6,15 +6,23 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
-# Project: log
+# Project: logexample
 # Configurations: Debug
 # =============================================================================
 # =============================================================================
 
 #############################################
+# Rule for running custom commands.
+
+rule CUSTOM_COMMAND
+  command = $COMMAND
+  description = $DESC
+
+
+#############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__log_Debug
+rule CXX_COMPILER__logexample_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = C:\Users\75108\Desktop\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\mingw64\bin\c++.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,18 +32,29 @@ rule CXX_COMPILER__log_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__log_Debug
+rule CXX_EXECUTABLE_LINKER__logexample_Debug
   command = cmd.exe /C "$PRE_LINK && C:\Users\75108\Desktop\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\mingw64\bin\c++.exe $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
 
 
 #############################################
-# Rule for running custom commands.
+# Rule for compiling CXX files.
 
-rule CUSTOM_COMMAND
-  command = $COMMAND
-  description = $DESC
+rule CXX_COMPILER__Log_Debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\Users\75108\Desktop\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\mingw64\bin\c++.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for linking CXX static library.
+
+rule CXX_STATIC_LIBRARY_LINKER__Log_Debug
+  command = cmd.exe /C "$PRE_LINK && J:\Tools\apps\CLion\ch-0\213.5744.254\bin\cmake\win\bin\cmake.exe -E rm -f $TARGET_FILE && C:\Users\75108\Desktop\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\mingw64\bin\ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\75108\Desktop\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\mingw64\bin\ranlib.exe $TARGET_FILE && $POST_BUILD"
+  description = Linking CXX static library $TARGET_FILE
+  restat = $RESTAT
 
 
 #############################################

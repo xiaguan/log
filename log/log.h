@@ -15,6 +15,14 @@
 #include <sstream>
 
 
+//格式控制
+/*
+ * %m 消息内容
+ *
+ *
+ */
+
+
 
 namespace Log {
     // 日志级别
@@ -189,4 +197,8 @@ namespace Log {
         std::string m_filename;
         std::ofstream m_file;
     };
+
+    void writelog(Logger::ptr logger,const std::string & msg);
+
+
 }

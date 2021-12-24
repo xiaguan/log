@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "log.exe"
+			"path" : "logexample.exe"
 		},
 		{
-			"path" : "log.pdb"
+			"path" : "logexample.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -14,7 +14,7 @@
 		"commands" : 
 		[
 			"add_executable",
-			"include_directories"
+			"target_link_libraries"
 		],
 		"files" : 
 		[
@@ -28,13 +28,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 8,
+				"line" : 7,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 6,
+				"line" : 9,
 				"parent" : 0
 			}
 		]
@@ -46,35 +46,23 @@
 			[
 				{
 					"fragment" : "-g"
-				},
-				{
-					"fragment" : "-std=gnu++14"
-				}
-			],
-			"includes" : 
-			[
-				{
-					"backtrace" : 2,
-					"path" : "J:/log/log"
 				}
 			],
 			"language" : "CXX",
-			"languageStandard" : 
-			{
-				"backtraces" : 
-				[
-					1
-				],
-				"standard" : "14"
-			},
 			"sourceIndexes" : 
 			[
-				0,
-				2
+				0
 			]
 		}
 	],
-	"id" : "log::@6890427a1f51a3e7e1df",
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "Log::@e2c7cea07f24a8229370"
+		}
+	],
+	"id" : "logexample::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -88,14 +76,19 @@
 				"role" : "flags"
 			},
 			{
+				"backtrace" : 2,
+				"fragment" : "log\\libLog.a",
+				"role" : "libraries"
+			},
+			{
 				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
 				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "log",
-	"nameOnDisk" : "log.exe",
+	"name" : "logexample",
+	"nameOnDisk" : "logexample.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -107,15 +100,7 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0,
-				2
-			]
-		},
-		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
-				1
+				0
 			]
 		}
 	],
@@ -124,18 +109,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "log/log.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "log/log.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "log/main.cpp",
+			"path" : "main.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

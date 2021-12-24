@@ -2,6 +2,10 @@
 
 namespace Log {
 
+    void writelog(Logger::ptr logger,const std::string & msg){
+        Log::LogEventWrap(Log::LogEvent::ptr(new Log::LogEvent(logger, Log::LogLevel::INFO, __FILE__, __LINE__, 0,0, 0, time(0), "main"))).getSS() << msg;
+    }
+
     const char* LogLevel::ToString(LogLevel::level level)
     {
         switch (level) {
