@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.21)
-project(logexample)
 
+project(log)
 
-add_subdirectory(log)
+include_directories(lib)
 
-add_executable(logexample main.cpp)
+aux_source_directory(. SRC_LIST)
+aux_source_directory(lib SRC_LIST)
 
-target_link_libraries(logexample Log)
-
+add_executable(log ${SRC_LIST} lib/mysock.h lib/mysock.cpp)

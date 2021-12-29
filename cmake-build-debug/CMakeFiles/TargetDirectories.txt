@@ -1,6 +1,3 @@
-J:/log/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-J:/log/cmake-build-debug/CMakeFiles/logexample.dir
+J:/log/cmake-build-debug/CMakeFiles/log.dir
 J:/log/cmake-build-debug/CMakeFiles/edit_cache.dir
-J:/log/cmake-build-debug/log/CMakeFiles/Log.dir
-J:/log/cmake-build-debug/log/CMakeFiles/edit_cache.dir
-J:/log/cmake-build-debug/log/CMakeFiles/rebuild_cache.dir
+J:/log/cmake-build-debug/CMakeFiles/rebuild_cache.dir

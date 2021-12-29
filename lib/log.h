@@ -1,4 +1,4 @@
-#pragma once
+
 #include <iostream>
 #include <inttypes.h>
 #include <string>
@@ -37,9 +37,9 @@ namespace Log {
             ERROR = 4,
             FATAL = 5,
         };
-        static const char* ToString(LogLevel::level level);
-    };
 
+        static const char *ToString(LogLevel::level level);
+    };
 
     class LogEvent {
     public:
@@ -52,13 +52,21 @@ namespace Log {
         std::string getContent() const { return m_ss.str(); }
         std::shared_ptr<Logger> getLogger() const { return m_logger; }
         uint32_t getTime() const { return m_time; }
-        LogLevel::level getLevel() const { return m_level; }
+        const LogLevel::level getLevel() const { return m_level; }
         std::stringstream& getSS() { return m_ss; }
 
+        //完整版
         LogEvent(std::shared_ptr<Logger> logger, LogLevel::level level
             , const char* file, int32_t line, uint32_t elapse
             , uint32_t thread_id, uint32_t fiber_id, uint64_t time
             , const std::string& thread_name);
+
+        //省略一些没必要信息
+        LogEvent(std::shared_ptr<Logger> logger, LogLevel::level level, const char *file, int32_t line):
+                LogEvent(logger,level,file,line,0,0,0,time(0),"")
+        {
+
+        }
     private:
         std::shared_ptr<Logger> m_logger;
         LogLevel::level m_level;  // 日志级别
@@ -170,6 +178,10 @@ namespace Log {
         void error(LogEvent::ptr event);
         void fatal(LogEvent::ptr event);
 
+        void setLevel(LogLevel::level level){
+            m_level = level;
+        }
+
         void addAppender(LogAppender::ptr appender);
         void delAppender(LogAppender::ptr appender);
 
@@ -198,7 +210,6 @@ namespace Log {
         std::ofstream m_file;
     };
 
-    void writelog(Logger::ptr logger,const std::string & msg);
 
 
 }

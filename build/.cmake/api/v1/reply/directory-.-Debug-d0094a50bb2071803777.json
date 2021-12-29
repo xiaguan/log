@@ -8,7 +8,7 @@
 	"installers" : [],
 	"paths" : 
 	{
-		"build" : "log",
-		"source" : "log"
+		"build" : ".",
+		"source" : "."
 	}
 }

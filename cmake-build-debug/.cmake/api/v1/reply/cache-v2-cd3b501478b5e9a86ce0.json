@@ -34,6 +34,18 @@
 			"value" : "C:/Users/75108/Desktop/x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0/mingw64/bin/ar.exe"
 		},
 		{
+			"name" : "CMAKE_BACKWARDS_COMPATIBILITY",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "For backwards compatibility, what version of CMake commands and syntax should this version of CMake try to support."
+				}
+			],
+			"type" : "STRING",
+			"value" : "2.4"
+		},
+		{
 			"name" : "CMAKE_BUILD_TYPE",
 			"properties" : 
 			[
@@ -103,7 +115,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "J:/Tools/apps/CLion/ch-0/213.5744.254/bin/cmake/win/bin/cmake.exe"
+			"value" : "J:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/bin/cmake.exe"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -115,7 +127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "J:/Tools/apps/CLion/ch-0/213.5744.254/bin/cmake/win/bin/cpack.exe"
+			"value" : "J:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/bin/cpack.exe"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -127,7 +139,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "J:/Tools/apps/CLion/ch-0/213.5744.254/bin/cmake/win/bin/ctest.exe"
+			"value" : "J:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/bin/ctest.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -635,7 +647,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/log"
+			"value" : "C:/Program Files (x86)/logexample"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -663,7 +675,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "J:/Tools/apps/CLion/ch-0/213.5744.254/bin/ninja/win/ninja.exe"
+			"value" : "J:/Tools/apps/CLion/ch-0/213.6461.46/bin/ninja/win/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -771,7 +783,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "2"
+			"value" : "1"
 		},
 		{
 			"name" : "CMAKE_OBJCOPY",
@@ -851,7 +863,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "logexample"
+			"value" : "log"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1003,7 +1015,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "J:/Tools/apps/CLion/ch-0/213.5744.254/bin/cmake/win/share/cmake-3.21"
+			"value" : "J:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1228,6 +1240,102 @@
 			],
 			"type" : "BOOL",
 			"value" : "FALSE"
+		},
+		{
+			"name" : "EXECUTABLE_OUTPUT_PATH",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Single output directory for building all executables."
+				}
+			],
+			"type" : "PATH",
+			"value" : ""
+		},
+		{
+			"name" : "LIBRARY_OUTPUT_PATH",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Single output directory for building all libraries."
+				}
+			],
+			"type" : "PATH",
+			"value" : ""
+		},
+		{
+			"name" : "Project_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "J:/log/cmake-build-debug"
+		},
+		{
+			"name" : "Project_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "Project_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "J:/log"
+		},
+		{
+			"name" : "lib_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "J:/log/cmake-build-debug"
+		},
+		{
+			"name" : "lib_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "lib_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "J:/log"
 		},
 		{
 			"name" : "log_BINARY_DIR",
