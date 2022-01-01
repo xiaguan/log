@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "log::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-log-Debug-015ae8bcb7ca454f752a.json",
+					"jsonFile" : "target-log-Debug-799f2c98349c612e18db.json",
 					"name" : "log",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "J:/log/cmake-build-debug",
+		"build" : "J:/log/build",
 		"source" : "J:/log"
 	},
 	"version" : 

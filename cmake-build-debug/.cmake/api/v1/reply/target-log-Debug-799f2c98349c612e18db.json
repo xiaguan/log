@@ -13,8 +13,7 @@
 	{
 		"commands" : 
 		[
-			"add_executable",
-			"include_directories"
+			"add_executable"
 		],
 		"files" : 
 		[
@@ -27,12 +26,6 @@
 			},
 			{
 				"command" : 0,
-				"file" : 0,
-				"line" : 10,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
 				"file" : 0,
 				"line" : 5,
 				"parent" : 0
@@ -48,19 +41,11 @@
 					"fragment" : "-g"
 				}
 			],
-			"includes" : 
-			[
-				{
-					"backtrace" : 2,
-					"path" : "J:/log/lib"
-				}
-			],
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
 				0,
-				1,
-				2
+				1
 			]
 		}
 	],
@@ -98,15 +83,14 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1,
-				2
+				1
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				3
+				2
 			]
 		}
 	],
@@ -126,13 +110,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "lib/mysock.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "lib/mysock.h",
+			"path" : "lib/log.h",
 			"sourceGroupIndex" : 1
 		}
 	],
