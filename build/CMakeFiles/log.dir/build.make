@@ -69,7 +69,6 @@ include CMakeFiles/log.dir/progress.make
 include CMakeFiles/log.dir/flags.make
 
 CMakeFiles/log.dir/main.cpp.obj: CMakeFiles/log.dir/flags.make
-CMakeFiles/log.dir/main.cpp.obj: CMakeFiles/log.dir/includes_CXX.rsp
 CMakeFiles/log.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/log.dir/main.cpp.obj: CMakeFiles/log.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=J:\log\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/log.dir/main.cpp.obj"
@@ -84,7 +83,6 @@ CMakeFiles/log.dir/main.cpp.s: cmake_force
 	C:\Users\75108\Desktop\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S J:\log\main.cpp -o CMakeFiles\log.dir\main.cpp.s
 
 CMakeFiles/log.dir/lib/log.cpp.obj: CMakeFiles/log.dir/flags.make
-CMakeFiles/log.dir/lib/log.cpp.obj: CMakeFiles/log.dir/includes_CXX.rsp
 CMakeFiles/log.dir/lib/log.cpp.obj: ../lib/log.cpp
 CMakeFiles/log.dir/lib/log.cpp.obj: CMakeFiles/log.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=J:\log\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/log.dir/lib/log.cpp.obj"

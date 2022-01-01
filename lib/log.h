@@ -1,4 +1,7 @@
 
+#ifndef LOG_LOG_LOG
+#define LOG_LOG_LOG
+
 #include <iostream>
 #include <inttypes.h>
 #include <string>
@@ -213,3 +216,5 @@ namespace Log {
 
 
 }
+
+#endif

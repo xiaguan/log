@@ -52,21 +52,12 @@ build cmake_object_order_depends_target_log: phony || CMakeFiles/log.dir
 build CMakeFiles/log.dir/main.cpp.obj: CXX_COMPILER__log_Debug J$:/log/main.cpp || cmake_object_order_depends_target_log
   DEP_FILE = CMakeFiles\log.dir\main.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IJ:/log/lib
   OBJECT_DIR = CMakeFiles\log.dir
   OBJECT_FILE_DIR = CMakeFiles\log.dir
 
 build CMakeFiles/log.dir/lib/log.cpp.obj: CXX_COMPILER__log_Debug J$:/log/lib/log.cpp || cmake_object_order_depends_target_log
   DEP_FILE = CMakeFiles\log.dir\lib\log.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IJ:/log/lib
-  OBJECT_DIR = CMakeFiles\log.dir
-  OBJECT_FILE_DIR = CMakeFiles\log.dir\lib
-
-build CMakeFiles/log.dir/lib/mysock.cpp.obj: CXX_COMPILER__log_Debug J$:/log/lib/mysock.cpp || cmake_object_order_depends_target_log
-  DEP_FILE = CMakeFiles\log.dir\lib\mysock.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IJ:/log/lib
   OBJECT_DIR = CMakeFiles\log.dir
   OBJECT_FILE_DIR = CMakeFiles\log.dir\lib
 
@@ -78,7 +69,7 @@ build CMakeFiles/log.dir/lib/mysock.cpp.obj: CXX_COMPILER__log_Debug J$:/log/lib
 #############################################
 # Link the executable log.exe
 
-build log.exe: CXX_EXECUTABLE_LINKER__log_Debug CMakeFiles/log.dir/main.cpp.obj CMakeFiles/log.dir/lib/log.cpp.obj CMakeFiles/log.dir/lib/mysock.cpp.obj
+build log.exe: CXX_EXECUTABLE_LINKER__log_Debug CMakeFiles/log.dir/main.cpp.obj CMakeFiles/log.dir/lib/log.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\log.dir
@@ -93,7 +84,7 @@ build log.exe: CXX_EXECUTABLE_LINKER__log_Debug CMakeFiles/log.dir/main.cpp.obj 
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D J:\log\cmake-build-debug && J:\Tools\apps\CLion\ch-0\213.6461.46\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D J:\log\cmake-build-debug && J:\Tools\apps\CLion\ch-0\213.6461.75\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -104,7 +95,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D J:\log\cmake-build-debug && J:\Tools\apps\CLion\ch-0\213.6461.46\bin\cmake\win\bin\cmake.exe --regenerate-during-build -SJ:\log -BJ:\log\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D J:\log\cmake-build-debug && J:\Tools\apps\CLion\ch-0\213.6461.75\bin\cmake\win\bin\cmake.exe --regenerate-during-build -SJ:\log -BJ:\log\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -133,14 +124,14 @@ build all: phony log.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake J$:/Tools/apps/CLion/ch-0/213.6461.46/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake: phony
+build ../CMakeLists.txt CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake J$:/Tools/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake: phony
 
 
 #############################################

@@ -219,6 +219,7 @@ namespace Log {
     }
 
     void Logger::addAppender(LogAppender::ptr appender) {
+
         m_appenders.push_back(appender);
     }
 

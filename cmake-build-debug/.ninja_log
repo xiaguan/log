@@ -1,12 +1,12 @@
 # ninja log v5
-18	1147	6623875738529895	CMakeFiles/log.dir/main.cpp.obj	3615b2d07532f9a3
 1941	2313	6623849520447615	log/libLog.a	ef93e752ce1bc4a
-2	270	6623876338779371	build.ninja	7e4c48b240cc63f2
+2	270	6627338995009224	build.ninja	7e4c48b240cc63f2
 3	1940	6623849516677616	log/CMakeFiles/Log.dir/log.cpp.obj	104eebe2d8bfc3d4
-115	1785	6623853874118569	CMakeFiles/log.dir/log/log.cpp.obj	6301e109da41c08b
 1923	2363	6623875750820003	log.exe	32df9f1baf521691
-16	923	6623854000485566	CMakeFiles/log.exe.dir/main.cpp.obj	dcf843c058586e3e
-1	1630	6623854007425567	CMakeFiles/log.exe.dir/log/log.cpp.obj	c995c740cd2f7819
-4	1922	6623875746119885	CMakeFiles/log.dir/lib/log.cpp.obj	72ebabb06bba79a4
-21	834	6623889226493464	CMakeFiles/log.dir/lib/mysock.cpp.obj	8ecfa843435cf869
-17	1704	6623889235115811	CMakeFiles/log.dir/lib/log.cpp.obj	72ebabb06bba79a4
+0	1829	6627338754778147	CMakeFiles/log.dir/lib/log.cpp.obj	835186062700d6be
+92	2186	6627339754222435	CMakeFiles/log.dir/lib/log.cpp.obj	835186062700d6be
+4	918	6627340303160207	CMakeFiles/log.dir/main.cpp.obj	8ace23cebbe9d2b1
+918	1635	6627340310270077	log.exe	32df9f1baf521691
+4	1050	6627344741569760	CMakeFiles/log.dir/main.cpp.obj	8ace23cebbe9d2b1
+82	1809	6627344749101807	CMakeFiles/log.dir/lib/log.cpp.obj	835186062700d6be
+1809	2289	6627344753911808	log.exe	32df9f1baf521691

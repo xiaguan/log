@@ -37,5 +37,58 @@ Log::Logger::ptr initlogger(){
 void sock_log_event(Log::LogEvent::ptr event,Log::LogLevel::level level){
     auto logger = initlogger();
     logger->log(level,event);
+    if(level==Log::LogLevel::FATAL){
+        exit(1);
+    }
 }
+
+void EasyError(const std::string & errormsg){
+    Log::LogEvent::ptr event = std::make_shared<Log::LogEvent>(Log::LogEvent(nullptr,Log::LogLevel::FATAL,"NULL",0));
+    event->getSS()<<errormsg;
+    sock_log_event(event,Log::LogLevel::FATAL);
+}
+
+int Socket(const int& family,const int& type,const int& protocol){
+    int result = socket(family,type,protocol);
+    if(result == -1){
+        EasyError("socket error !");
+    }
+}
+
+int Connect(const int& sockfd,const struct sockaddr * servaddr,socklen_t addrlen){
+    int result = connect(sockfd,servaddr,addrlen);
+    if(result == -1){
+        EasyError("connect()  error !");
+    }
+    return result;
+}
+
+int Bind(const int & sockfd,const struct sockaddr * myaddr,socklen_t addrlen){
+    int result = bind(sockfd,myaddr,addrlen);
+    if(result==-1){
+        EasyError("bind() error !");
+    }
+    return result;
+}
+
+int Listen(const int& sockfd, const int & backlog){
+    int result = listen(sockfd,backlog);
+    if(result == -1){
+        EasyError("Listen() Error !");
+    }
+    return result;
+}
+
+int Accept(const int & sockfd,struct sockaddr * cliaddr,socklen_t *addrlen){
+    int result = accept(sockfd,cliaddr,addrlen);
+    if(result == -1){
+        EasyError("accept() error");
+    }
+    return result;
+}
+
+
+
+
+
 
