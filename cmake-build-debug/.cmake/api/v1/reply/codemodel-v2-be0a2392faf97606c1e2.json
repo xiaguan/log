@@ -6,10 +6,9 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.21"
+						"string" : "3.20"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -27,7 +26,7 @@
 					[
 						0
 					],
-					"name" : "log",
+					"name" : "Su",
 					"targetIndexes" : 
 					[
 						0
@@ -39,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "log::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-log-Debug-799f2c98349c612e18db.json",
+					"jsonFile" : "target-log-Debug-1d50ac60b9a3fc7fe729.json",
 					"name" : "log",
 					"projectIndex" : 0
 				}
@@ -49,12 +48,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "J:/log/cmake-build-debug",
-		"source" : "J:/log"
+		"build" : "C:/Users/75108/Documents/GitHub/log/cmake-build-debug",
+		"source" : "C:/Users/75108/Documents/GitHub/log"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 3
+		"minor" : 2
 	}
 }

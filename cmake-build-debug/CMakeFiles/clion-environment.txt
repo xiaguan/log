@@ -1,8 +1,4 @@
 ToolSet: w64 6.0 (local)@C:\CS learning\Code\C++\MinGW\mingw64
 Options: 
 
-<<<<<<< HEAD
 Options:
-=======
-Options:-DCMAKE_MAKE_PROGRAM=J:/Tools/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe
->>>>>>> 28da256503dc419b0924d49d5015e9def1d8708c

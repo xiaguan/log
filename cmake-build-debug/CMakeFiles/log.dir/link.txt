@@ -1,0 +1,3 @@
+C:\Users\75108\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5457.51\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\log.dir/objects.a
+C:\CSLEAR~1\Code\C__~1\MinGW\mingw64\bin\ar.exe cr CMakeFiles\log.dir/objects.a @CMakeFiles\log.dir\objects1.rsp
+C:\CSLEAR~1\Code\C__~1\MinGW\mingw64\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\log.dir/objects.a -Wl,--no-whole-archive -o log.exe -Wl,--out-implib,liblog.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\log.dir\linklibs.rsp

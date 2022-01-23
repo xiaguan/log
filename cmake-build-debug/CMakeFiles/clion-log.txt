@@ -1,13 +1,4 @@
-<<<<<<< HEAD
 C:\Users\75108\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5457.51\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" C:\Users\75108\Documents\GitHub\log
-CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
-  CMake 3.21 or higher is required.  You are running version 3.20.2
-
-
--- Configuring incomplete, errors occurred!
-=======
-J:\Tools\apps\CLion\ch-0\213.6461.75\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=J:/Tools/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe -G Ninja J:\log
 -- Configuring done
 -- Generating done
--- Build files have been written to: J:/log/cmake-build-debug
->>>>>>> 28da256503dc419b0924d49d5015e9def1d8708c
+-- Build files have been written to: C:/Users/75108/Documents/GitHub/log/cmake-build-debug

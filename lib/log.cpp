@@ -1,12 +1,13 @@
 #include "log.h"
 
-namespace Log {
+namespace Su {
 
 
 
     const char* LogLevel::ToString(LogLevel::level level)
     {
-        switch (level) {
+        switch (level)
+        {
 #define XX(name)\
 		case LogLevel::name: \
 			return #name;\
@@ -183,7 +184,7 @@ namespace Log {
     }
 
 
-    void Log::Logger::log(LogLevel::level level, LogEvent::ptr event)
+    void Su::Logger::log(LogLevel::level level, LogEvent::ptr event)
     {
         if (level >= m_level) {
             auto self = shared_from_this();
@@ -236,7 +237,7 @@ namespace Log {
 
 
 
-    void StdOutAppender::log(std::shared_ptr<Logger> logger, LogLevel::level level, Log::LogEvent::ptr event)
+    void StdOutAppender::log(std::shared_ptr<Logger> logger, LogLevel::level level, Su::LogEvent::ptr event)
     {
         if (level >= m_level) {
 
@@ -244,7 +245,7 @@ namespace Log {
         }
     }
 
-    bool Log::FileOutAppender::reopen()
+    bool Su::FileOutAppender::reopen()
     {
         if (m_file.is_open()) {
             m_file.close();
@@ -253,7 +254,7 @@ namespace Log {
         return !!m_file;
     }
 
-    void FileOutAppender::log(std::shared_ptr<Logger> logger, LogLevel::level level, Log::LogEvent::ptr event)
+    void FileOutAppender::log(std::shared_ptr<Logger> logger, LogLevel::level level, Su::LogEvent::ptr event)
     {
         m_file << m_formatter->format(logger, level, event);
     }
@@ -265,12 +266,12 @@ namespace Log {
 
 
 
-    Log::LogFormatter::LogFormatter(const std::string& pattern) :m_pattern(pattern)
+    Su::LogFormatter::LogFormatter(const std::string& pattern) :m_pattern(pattern)
     {
         init();
     }
 
-    std::string Log::LogFormatter::format(std::shared_ptr<Logger> logger, LogLevel::level level, LogEvent::ptr event)
+    std::string Su::LogFormatter::format(std::shared_ptr<Logger> logger, LogLevel::level level, LogEvent::ptr event)
     {
         std::stringstream ss;
         for (auto& i : m_items) {

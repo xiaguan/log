@@ -9,7 +9,7 @@
 
 
 //使用一个静态的logger进行日志的输出
-void sock_log_event(Log::LogEvent::ptr ,Log::LogLevel::level level);
+void sock_log_event(Su::LogEvent::ptr ,Su::LogLevel::level level);
 
 void EasyError(const std::string & errormsg);
 

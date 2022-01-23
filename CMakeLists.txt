@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.20)
 
-project(log)
+project(Su)
 
-add_executable(log main.cpp ./lib/log.cpp ./lib/log.h)
+add_executable(log main.cpp)

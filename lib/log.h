@@ -27,7 +27,7 @@
 
 
 
-namespace Log {
+namespace Su {
     // 日志级别
     class Logger;
 
@@ -199,12 +199,12 @@ namespace Log {
     class StdOutAppender :public LogAppender {
     public:
         using ptr = std::shared_ptr<StdOutAppender>;
-        virtual void log(std::shared_ptr<Logger> logger, LogLevel::level level, Log::LogEvent::ptr event) override;
+        virtual void log(std::shared_ptr<Logger> logger, LogLevel::level level, Su::LogEvent::ptr event) override;
     };
     class FileOutAppender :public LogAppender {
     public:
         using ptr = std::shared_ptr<FileOutAppender>;
-        virtual void log(std::shared_ptr<Logger> logger, LogLevel::level level, Log::LogEvent::ptr event) override;
+        virtual void log(std::shared_ptr<Logger> logger, LogLevel::level level, Su::LogEvent::ptr event) override;
         FileOutAppender(const std::string& filename);
 
         bool reopen();
