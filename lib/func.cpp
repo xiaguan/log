@@ -4,3 +4,6 @@
 
 #include "func.h"
 
+namespace Su{
+    
+}

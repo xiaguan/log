@@ -104,8 +104,8 @@ namespace Su {
 
         void format(std::ostream& os, Logger::ptr logger, LogLevel::level level, LogEvent::ptr event) override {
             struct tm now_tm;
-            const time_t time_m = event->getTime();
-            localtime_s(&now_tm,&time_m);
+            time_t time_m = event->getTime();
+            localtime_r(&time_m,&now_tm);
             char buf[64];
             strftime(buf, sizeof(buf), m_format.c_str(), &now_tm);
             os << buf;
@@ -323,7 +323,7 @@ namespace Su {
                     if (m_pattern[n] == '{') {
                         str = m_pattern.substr(i + 1, n - i - 1);
                         //std::cout << "*" << str << std::endl;
-                        fmt_status = 1; //½âÎö¸ñÊ½
+                        fmt_status = 1; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
                         fmt_begin = n;
                         ++n;
                         continue;
@@ -368,18 +368,18 @@ namespace Su {
 #define XX(str, C) \
         {#str, [](const std::string& fmt) { return FormatterItem::ptr(new C(fmt));}}
 
-                XX(m, MessageFormatItem),           //m:ÏûÏ¢
-                XX(p, LevelFormatItem),             //p:ÈÕÖ¾¼¶±ð
-                XX(r, ElapseFormatItem),            //r:ÀÛ¼ÆºÁÃëÊý
-                XX(c, NameFormatItem),              //c:ÈÕÖ¾Ãû³Æ
-                XX(t, ThreadIdFormatItem),          //t:Ïß³Ìid
-                XX(n, NewLineFormatItem),           //n:»»ÐÐ
-                XX(d, DateTimeFormatItem),          //d:Ê±¼ä
-                XX(f, FilenameFormatItem),          //f:ÎÄ¼þÃû
-                XX(l, LineFormatItem),              //l:ÐÐºÅ
+                XX(m, MessageFormatItem),           //m:ï¿½ï¿½Ï¢
+                XX(p, LevelFormatItem),             //p:ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
+                XX(r, ElapseFormatItem),            //r:ï¿½Û¼Æºï¿½ï¿½ï¿½ï¿½ï¿½
+                XX(c, NameFormatItem),              //c:ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
+                XX(t, ThreadIdFormatItem),          //t:ï¿½ß³ï¿½id
+                XX(n, NewLineFormatItem),           //n:ï¿½ï¿½ï¿½ï¿½
+                XX(d, DateTimeFormatItem),          //d:Ê±ï¿½ï¿½
+                XX(f, FilenameFormatItem),          //f:ï¿½Ä¼ï¿½ï¿½ï¿½
+                XX(l, LineFormatItem),              //l:ï¿½Ðºï¿½
                 XX(T, TabFormatItem),               //T:Tab
-                XX(F, FiberIdFormatItem),           //F:Ð­³Ìid
-                XX(N, ThreadNameFormatItem),        //N:Ïß³ÌÃû³Æ
+                XX(F, FiberIdFormatItem),           //F:Ð­ï¿½ï¿½id
+                XX(N, ThreadNameFormatItem),        //N:ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½
 #undef XX
         };
 
@@ -401,6 +401,48 @@ namespace Su {
             //std::cout << "(" << std::get<0>(i) << ") - (" << std::get<1>(i) << ") - (" << std::get<2>(i) << ")" << std::endl;
         }
         //std::cout << m_items.size() << std::endl;
+    }
+
+    bool init = false;
+
+     Su::Logger::ptr initlogger(){
+        static Su::Logger::ptr logger;
+        if(init){
+            return logger;
+        }
+        else{
+            logger = std::make_shared<Su::Logger>();
+            //åˆ›å»ºä¸¤ä¸ªappenderç”¨äºŽè¾“å‡º
+            Su::StdOutAppender::ptr stdout_appender(new Su::StdOutAppender);
+            Su::FileOutAppender::ptr file_appender(new Su::FileOutAppender("lib.txt"));
+
+            //è®¾ç½®æ ¼å¼
+            Su::LogFormatter::ptr fmt(new Su::LogFormatter("%d%T%p%T%m%T%t%T%f%T%l%n"));
+
+            //appenderçš„formatæŽ§åˆ¶
+            file_appender->setFormater(fmt);
+            file_appender->setLevel(Su::LogLevel::DEBUG);
+            stdout_appender->setFormater(fmt);
+            stdout_appender->setLevel(Su::LogLevel::DEBUG);
+
+            //å°†ä¸¤ä¸ªappenderæ”¾å…¥loggerçš„m_appenderé“¾è¡¨ä¸­
+            logger->addAppender(stdout_appender);
+            logger->addAppender(file_appender);
+            logger->setLevel(Su::LogLevel::DEBUG);
+
+            init = true;
+            return logger;
+        }
+    }
+
+    void sylar_log_write(const std::string & msg,Su::LogLevel::level level){
+        auto logger = initlogger();
+        Su::LogEvent::ptr event = std::make_shared<Su::LogEvent>(Su::LogEvent(nullptr,level,"NULL",0));
+        event->getSS()<<msg;
+        logger->log(level,event);
+        if(level==Su::LogLevel::FATAL){
+            exit(1);
+        }
     }
 
 }

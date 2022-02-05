@@ -1,0 +1,1 @@
+/opt/rh/devtoolset-11/root/usr/bin/c++ CMakeFiles/server.dir/serv.cpp.o -o server  -Wl,-rpath,/root/workspace/log/build/lib ../lib/libSu.so -pthread 

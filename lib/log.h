@@ -18,9 +18,9 @@
 #include <sstream>
 
 
-//¸ñÊ½¿ØÖÆ
+//ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
 /*
- * %m ÏûÏ¢ÄÚÈÝ
+ * %m ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
  *
  *
  */
@@ -28,7 +28,7 @@
 
 
 namespace Su {
-    // ÈÕÖ¾¼¶±ð
+    // ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
     class Logger;
 
     class LogLevel {
@@ -58,13 +58,13 @@ namespace Su {
         const LogLevel::level getLevel() const { return m_level; }
         std::stringstream& getSS() { return m_ss; }
 
-        //ÍêÕû°æ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         LogEvent(std::shared_ptr<Logger> logger, LogLevel::level level
             , const char* file, int32_t line, uint32_t elapse
             , uint32_t thread_id, uint32_t fiber_id, uint64_t time
             , const std::string& thread_name);
 
-        //Ê¡ÂÔÒ»Ð©Ã»±ØÒªÐÅÏ¢
+        //Ê¡ï¿½ï¿½Ò»Ð©Ã»ï¿½ï¿½Òªï¿½ï¿½Ï¢
         LogEvent(std::shared_ptr<Logger> logger, LogLevel::level level, const char *file, int32_t line):
                 LogEvent(logger,level,file,line,0,0,0,time(0),"")
         {
@@ -72,57 +72,57 @@ namespace Su {
         }
     private:
         std::shared_ptr<Logger> m_logger;
-        LogLevel::level m_level;  // ÈÕÖ¾¼¶±ð
-        std::string msg_content;		//ÈÕÖ¾ÄÚÈÝ
-        uint32_t m_line;				//ÐÐºÅ
-        uint32_t m_elapse = 0;			// ³ÌÐòÆô¶¯¿ªÊ¼µ½ÏÖÔÚµÄºÁÃëÊý
-        uint32_t m_threadid = 0;		// Ïß³Ìid
-        uint32_t m_fiberid = 0;          //Ð­³Ìid
-        uint32_t m_time;				// Ê±¼ä´Á
-        const char* filename = nullptr;  // ÎÄ¼þÃû
-        std::stringstream m_ss;          // ÈÕÖ¾ÄÚÈÝÁ÷
+        LogLevel::level m_level;  // ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
+        std::string msg_content;		//ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
+        uint32_t m_line;				//ï¿½Ðºï¿½
+        uint32_t m_elapse = 0;			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ÚµÄºï¿½ï¿½ï¿½ï¿½ï¿½
+        uint32_t m_threadid = 0;		// ï¿½ß³ï¿½id
+        uint32_t m_fiberid = 0;          //Ð­ï¿½ï¿½id
+        uint32_t m_time;				// Ê±ï¿½ï¿½ï¿½
+        const char* filename = nullptr;  // ï¿½Ä¼ï¿½ï¿½ï¿½
+        std::stringstream m_ss;          // ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         std::string m_threadname = "";
     };
 
     /**
-* @brief ÈÕÖ¾ÊÂ¼þ°ü×°Æ÷
+* @brief ï¿½ï¿½Ö¾ï¿½Â¼ï¿½ï¿½ï¿½×°ï¿½ï¿½
 */
     class LogEventWrap {
     public:
 
         /**
-         * @brief ¹¹Ôìº¯Êý
-         * @param[in] e ÈÕÖ¾ÊÂ¼þ
+         * @brief ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
+         * @param[in] e ï¿½ï¿½Ö¾ï¿½Â¼ï¿½
          */
         LogEventWrap(LogEvent::ptr e);
 
         /**
-         * @brief Îö¹¹º¯Êý
+         * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
          */
         ~LogEventWrap();
 
         /**
-         * @brief »ñÈ¡ÈÕÖ¾ÊÂ¼þ
+         * @brief ï¿½ï¿½È¡ï¿½ï¿½Ö¾ï¿½Â¼ï¿½
          */
         LogEvent::ptr getEvent() const { return m_event; }
 
         /**
-         * @brief »ñÈ¡ÈÕÖ¾ÄÚÈÝÁ÷
+         * @brief ï¿½ï¿½È¡ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
          */
         std::stringstream& getSS();
     private:
         /**
-         * @brief ÈÕÖ¾ÊÂ¼þ
+         * @brief ï¿½ï¿½Ö¾ï¿½Â¼ï¿½
          */
         LogEvent::ptr m_event;
     };
 
 
-    //ÈÕÖ¾¸ñÊ½»¯
+    //ï¿½ï¿½Ö¾ï¿½ï¿½Ê½ï¿½ï¿½
     class LogFormatter {
     public:
         using ptr = std::shared_ptr<LogFormatter>;
-        LogFormatter(const std::string& pattern); //patter³õÊ¼»¯
+        LogFormatter(const std::string& pattern); //patterï¿½ï¿½Ê¼ï¿½ï¿½
 
         std::string format(std::shared_ptr<Logger> logger, LogLevel::level level, LogEvent::ptr event);
         std::ostream& format(std::ostream& ofs, std::shared_ptr<Logger> logger, LogLevel::level level, LogEvent::ptr event);
@@ -131,15 +131,15 @@ namespace Su {
         public:
             typedef std::shared_ptr<FormatterItem> ptr;
             /**
-             * @brief Îö¹¹º¯Êý
+             * @brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
              */
             virtual ~FormatterItem() {}
             /**
-             * @brief ¸ñÊ½»¯ÈÕÖ¾µ½Á÷
-             * @param[in, out] os ÈÕÖ¾Êä³öÁ÷
-             * @param[in] logger ÈÕÖ¾Æ÷
-             * @param[in] level ÈÕÖ¾µÈ¼¶
-             * @param[in] event ÈÕÖ¾ÊÂ¼þ
+             * @brief ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
+             * @param[in, out] os ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½
+             * @param[in] logger ï¿½ï¿½Ö¾ï¿½ï¿½
+             * @param[in] level ï¿½ï¿½Ö¾ï¿½È¼ï¿½
+             * @param[in] event ï¿½ï¿½Ö¾ï¿½Â¼ï¿½
              */
             virtual void format(std::ostream& os, std::shared_ptr<Logger> logger, LogLevel::level level, LogEvent::ptr event) = 0;
         };
@@ -152,7 +152,7 @@ namespace Su {
         bool m_error = false;
     };
 
-    //ÕâÊÇÈÕÖ¾Êä³öµÄ»ùÀà
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
     class LogAppender {
     public:
         using ptr = std::shared_ptr<LogAppender>;
@@ -170,7 +170,7 @@ namespace Su {
     class Logger : public std::enable_shared_from_this<Logger> {
     public:
         using ptr = std::shared_ptr<Logger>;
-        //¹¹Ôìº¯Êý
+        //ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
         Logger(const std::string& name = "root");
 
         void log(LogLevel::level level, LogEvent::ptr event);
@@ -190,9 +190,9 @@ namespace Su {
 
         std::string getName() const { return m_name; };
     private:
-        std::string m_name; // loggerµÄÃû×Ö
-        LogLevel::level m_level;   // logerµÄlevel¼¶±ð
-        std::list<LogAppender::ptr> m_appenders; //Êä³öÆ÷Á´±í
+        std::string m_name; // loggerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        LogLevel::level m_level;   // logerï¿½ï¿½levelï¿½ï¿½ï¿½ï¿½
+        std::list<LogAppender::ptr> m_appenders; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     };
 
 
@@ -213,7 +213,8 @@ namespace Su {
         std::ofstream m_file;
     };
 
-
+    Su::Logger::ptr initlogger();
+     void sylar_log_write(const std::string & msg,Su::LogLevel::level level);
 
 }
 

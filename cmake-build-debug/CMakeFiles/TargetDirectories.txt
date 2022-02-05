@@ -1,3 +1,0 @@
-C:/Users/75108/Documents/GitHub/log/cmake-build-debug/CMakeFiles/log.dir
-C:/Users/75108/Documents/GitHub/log/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/75108/Documents/GitHub/log/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,2 +1,1 @@
-set(LIB_LIST func.cpp log.cpp mysock.cpp socket.cpp)
-add_library(Su SHARED ${LIB_LIST})
+add_library(Su SHARED func.cpp log.cpp mysock.cpp oop_sock.cpp)

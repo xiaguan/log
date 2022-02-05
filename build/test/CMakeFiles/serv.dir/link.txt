@@ -1,0 +1,1 @@
+/opt/rh/devtoolset-11/root/usr/bin/c++ CMakeFiles/serv.dir/serv.cpp.o -o serv  -Wl,-rpath,/root/workspace/log/build/lib ../lib/libSu.so 
