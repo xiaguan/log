@@ -20,12 +20,6 @@ namespace Su{
 
     void test();
 
-
-//使用一个静态的logger进行日志的输出
-    void sock_log_event(Su::LogEvent::ptr ,Su::LogLevel::level level);
-
-    void EasyError(const std::string & errormsg);
-
     int Socket(const int& family,const int& type,const int& protocol);
 
     int Connect(const int& sockfd,struct sockaddr_in & servaddr,socklen_t addrlen);
