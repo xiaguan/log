@@ -638,10 +638,10 @@ lib/CMakeFiles/Su.dir/mysock.cpp.o
  /usr/include/getopt.h
  /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h
 
-lib/CMakeFiles/Su.dir/socket.cpp.o
- /root/workspace/log/lib/socket.cpp
+lib/CMakeFiles/Su.dir/oop_sock.cpp.o
+ /root/workspace/log/lib/oop_sock.cpp
  /usr/include/stdc-predef.h
- /root/workspace/log/lib/socket.h
+ /root/workspace/log/lib/oop_sock.h
  /root/workspace/log/lib/mysock.h
  /root/workspace/log/lib/log.h
  /opt/rh/devtoolset-11/root/usr/include/c++/11/iostream

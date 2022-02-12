@@ -5,8 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Su.dir/log.cpp.o.d"
   "CMakeFiles/Su.dir/mysock.cpp.o"
   "CMakeFiles/Su.dir/mysock.cpp.o.d"
-  "CMakeFiles/Su.dir/socket.cpp.o"
-  "CMakeFiles/Su.dir/socket.cpp.o.d"
+  "CMakeFiles/Su.dir/oop_sock.cpp.o"
+  "CMakeFiles/Su.dir/oop_sock.cpp.o.d"
   "libSu.pdb"
   "libSu.so"
 )

@@ -635,9 +635,9 @@ lib/CMakeFiles/Su.dir/mysock.cpp.o: ../lib/mysock.cpp \
   /usr/include/getopt.h \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h
 
-lib/CMakeFiles/Su.dir/socket.cpp.o: ../lib/socket.cpp \
+lib/CMakeFiles/Su.dir/oop_sock.cpp.o: ../lib/oop_sock.cpp \
   /usr/include/stdc-predef.h \
-  ../lib/socket.h \
+  ../lib/oop_sock.h \
   ../lib/mysock.h \
   ../lib/log.h \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/iostream \
@@ -860,7 +860,7 @@ lib/CMakeFiles/Su.dir/socket.cpp.o: ../lib/socket.cpp \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h
 
 
-../lib/socket.h:
+../lib/oop_sock.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h:
 
@@ -1118,6 +1118,8 @@ lib/CMakeFiles/Su.dir/socket.cpp.o: ../lib/socket.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/shared_ptr.h:
 
+../lib/oop_sock.cpp:
+
 /opt/rh/devtoolset-11/root/usr/include/c++/11/backward/auto_ptr.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/cpp_type_traits.h:
@@ -1189,8 +1191,6 @@ lib/CMakeFiles/Su.dir/socket.cpp.o: ../lib/socket.cpp \
 /usr/include/bits/select.h:
 
 /usr/include/alloca.h:
-
-../lib/socket.cpp:
 
 ../lib/log.cpp:
 

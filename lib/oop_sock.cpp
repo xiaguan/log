@@ -1,7 +1,8 @@
 //
 // Created by 75108 on 2022/1/23.
 //
-#include "socket.h"
+#include "oop_sock.h"
+
 
 namespace Su{
 
@@ -9,7 +10,7 @@ namespace Su{
     TCPserver::TCPserver(int port):m_port(port){}
     void TCPserver::init(){
         //sockfd 获取
-        m_sockfd = Su::Socket(AF_INET,SOCK_STREAM,0);
+        m_listenfd = Su::Socket(AF_INET,SOCK_STREAM,0);
 
         //填充服务器结构体;
         bzero(&m_serv_addr,sizeof(m_serv_addr));
@@ -17,17 +18,19 @@ namespace Su{
         inet_pton(AF_INET,"127.0.0.1",&m_serv_addr.sin_addr);
         m_serv_addr.sin_port = htons(m_port);
         
-        Su::Bind(m_sockfd,m_serv_addr,sizeof(m_serv_addr));
-        Su::Listen(m_sockfd,5);
+        Su::Bind(m_listenfd,m_serv_addr,sizeof(m_serv_addr));
+        Su::Listen(m_listenfd,5);
         //成功启动
     }
 
     void TCPserver::accept(){
         socklen_t sz = sizeof(m_client_addr);
-        Su::Accept(m_sockfd,m_client_addr,&sz);
+        m_connfd = Su::Accept(m_listenfd,m_client_addr,&sz);
     }
 
     struct sockaddr_in Su::TCPserver::get_client() {return m_client_addr;};
+    int TCPserver::get_connfd() {return m_connfd;}
+    int TCPserver::get_listenfd(){return m_listenfd;}
 
 
     //TCPclient 相关函数
@@ -43,5 +46,9 @@ namespace Su{
     void TCPclient::connect() {
         socklen_t sz = sizeof(m_serv_addr);
         Su::Connect(m_sockfd,m_serv_addr,sz);
+    }
+
+    int TCPclient::get_sockfd(){
+        return m_sockfd;
     }
 }

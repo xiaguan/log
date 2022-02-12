@@ -202,29 +202,29 @@ mysock.cpp.s:
 	cd /root/workspace/log/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Su.dir/build.make lib/CMakeFiles/Su.dir/mysock.cpp.s
 .PHONY : mysock.cpp.s
 
-socket.o: socket.cpp.o
-.PHONY : socket.o
+oop_sock.o: oop_sock.cpp.o
+.PHONY : oop_sock.o
 
 # target to build an object file
-socket.cpp.o:
-	cd /root/workspace/log/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Su.dir/build.make lib/CMakeFiles/Su.dir/socket.cpp.o
-.PHONY : socket.cpp.o
+oop_sock.cpp.o:
+	cd /root/workspace/log/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Su.dir/build.make lib/CMakeFiles/Su.dir/oop_sock.cpp.o
+.PHONY : oop_sock.cpp.o
 
-socket.i: socket.cpp.i
-.PHONY : socket.i
+oop_sock.i: oop_sock.cpp.i
+.PHONY : oop_sock.i
 
 # target to preprocess a source file
-socket.cpp.i:
-	cd /root/workspace/log/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Su.dir/build.make lib/CMakeFiles/Su.dir/socket.cpp.i
-.PHONY : socket.cpp.i
+oop_sock.cpp.i:
+	cd /root/workspace/log/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Su.dir/build.make lib/CMakeFiles/Su.dir/oop_sock.cpp.i
+.PHONY : oop_sock.cpp.i
 
-socket.s: socket.cpp.s
-.PHONY : socket.s
+oop_sock.s: oop_sock.cpp.s
+.PHONY : oop_sock.s
 
 # target to generate assembly for a file
-socket.cpp.s:
-	cd /root/workspace/log/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Su.dir/build.make lib/CMakeFiles/Su.dir/socket.cpp.s
-.PHONY : socket.cpp.s
+oop_sock.cpp.s:
+	cd /root/workspace/log/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/Su.dir/build.make lib/CMakeFiles/Su.dir/oop_sock.cpp.s
+.PHONY : oop_sock.cpp.s
 
 # Help Target
 help:
@@ -244,9 +244,9 @@ help:
 	@echo "... mysock.o"
 	@echo "... mysock.i"
 	@echo "... mysock.s"
-	@echo "... socket.o"
-	@echo "... socket.i"
-	@echo "... socket.s"
+	@echo "... oop_sock.o"
+	@echo "... oop_sock.i"
+	@echo "... oop_sock.s"
 .PHONY : help
 
 

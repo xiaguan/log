@@ -3,6 +3,9 @@
 
 test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
   /usr/include/stdc-predef.h \
+  ../lib/oop_sock.h \
+  ../lib/mysock.h \
+  ../lib/log.h \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/iostream \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/x86_64-redhat-linux/bits/c++config.h \
   /usr/include/bits/wordsize.h \
@@ -144,8 +147,6 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/ostream.tcc \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/istream \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/istream.tcc \
-  ../lib/mysock.h \
-  ../lib/log.h \
   /usr/include/inttypes.h \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/memory \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_uninitialized.h \
@@ -223,23 +224,15 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
   /usr/include/bits/confname.h \
   /usr/include/getopt.h \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h \
-  ../lib/log.h \
-  ../lib/socket.h \
-  ../lib/mysock.h \
-  ../lib/func.h \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/thread \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/std_thread.h \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/this_thread_sleep.h \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/chrono \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/ratio \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/limits \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/ctime \
-  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/parse_numbers.h \
-  /opt/rh/devtoolset-11/root/usr/include/c++/11/thread \
-  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/std_thread.h \
-  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/this_thread_sleep.h
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/parse_numbers.h
 
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/this_thread_sleep.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/std_thread.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/parse_numbers.h:
 
@@ -247,9 +240,9 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/chrono:
 
-../lib/func.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/this_thread_sleep.h:
 
-../lib/socket.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/std_thread.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h:
 
@@ -287,17 +280,9 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_heap.h:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/thread:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/alloc_traits.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/exception:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bit:
-
 /opt/rh/devtoolset-11/root/usr/include/c++/11/ext/alloc_traits.h:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/string_view:
+../lib/oop_sock.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/string_view.tcc:
 
@@ -391,6 +376,14 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/x86_64-redhat-linux/bits/basic_file.h:
 
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_iterator_base_types.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/nested_exception.h:
+
+/usr/include/bits/sigset.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/list:
+
 /opt/rh/devtoolset-11/root/usr/include/c++/11/cctype:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/pstl/pstl_config.h:
@@ -409,19 +402,73 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/basic_ios.tcc:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/move.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/typeinfo:
 
-/usr/include/bits/timex.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_function.h:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/vector:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/ostream_insert.h:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_iterator_base_types.h:
+/usr/include/bits/posix_opt.h:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/nested_exception.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/exception_defines.h:
 
-/usr/include/bits/sigset.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/system_error:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/list:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/exception.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/locale_classes.tcc:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/exception_ptr.h:
+
+/usr/include/stdint.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/asm-generic/sockios.h:
+
+/usr/include/features.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/new:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/localefwd.h:
+
+/usr/include/stdc-predef.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stringfwd.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/uses_allocator.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/sstream.tcc:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/allocator.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/ext/type_traits.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/stdexcept:
+
+../lib/log.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/ext/numeric_traits.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/debug/assertions.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/ext/string_conversions.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_algo.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_multimap.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_pair.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/x86_64-redhat-linux/bits/c++allocator.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/ostream:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/predefined_ops.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/invoke.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/range_access.h:
 
@@ -445,49 +492,15 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/backward/auto_ptr.h:
 
-/usr/include/asm-generic/sockios.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/cpp_type_traits.h:
 
-/usr/include/features.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/fstream:
 
-/usr/include/stdint.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/move.h:
 
-/usr/include/bits/endian.h:
+/usr/include/bits/timex.h:
 
-/usr/include/bits/wordsize.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_function.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/ostream_insert.h:
-
-/usr/include/bits/posix_opt.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/exception_defines.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/system_error:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/exception.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/locale_classes.tcc:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/localefwd.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/new:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/exception_ptr.h:
-
-/usr/include/stdc-predef.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stringfwd.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/uses_allocator.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/sstream.tcc:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/ext/numeric_traits.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/debug/assertions.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/ext/string_conversions.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/vector:
 
 /opt/rh/devtoolset-11/root/usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h:
 
@@ -505,7 +518,13 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/vector.tcc:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/typeinfo:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/exception:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/thread:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/alloc_traits.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bit:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/cxxabi_init_exception.h:
 
@@ -519,31 +538,13 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/istream:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/cpp_type_traits.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/fstream:
-
 /opt/rh/devtoolset-11/root/usr/include/c++/11/type_traits:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/char_traits.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_algobase.h:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/allocator.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/ext/type_traits.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/stdexcept:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/x86_64-redhat-linux/bits/c++allocator.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/ostream:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/predefined_ops.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/invoke.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_pair.h:
+/opt/rh/devtoolset-11/root/usr/include/c++/11/string_view:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/hash_bytes.h:
 
@@ -619,8 +620,6 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/locale_facets.tcc:
 
-../lib/log.h:
-
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/basic_ios.h:
 
 /usr/include/inttypes.h:
@@ -644,10 +643,6 @@ test/CMakeFiles/client.dir/client.cpp.o: ../test/client.cpp \
 /opt/rh/devtoolset-11/root/usr/include/c++/11/pstl/glue_memory_defs.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_list.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_multimap.h:
-
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_algo.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_iterator_base_funcs.h:
 

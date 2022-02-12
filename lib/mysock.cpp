@@ -47,7 +47,17 @@ namespace Su{
     int Connect(const int& sockfd,struct sockaddr_in & serv_addr,socklen_t addrlen){
         int result = connect(sockfd,(struct sockaddr*)&serv_addr,addrlen);
         if(result == -1){
-            EasyError("connect()  error !");
+            if(errno == ECONNREFUSED){
+                EasyError("connect() error: hard error");
+            }
+            else if(errno == ETIMEDOUT ){
+                EasyError("coonect() error : time out ");
+            }
+            else if(errno == EHOSTDOWN || errno == ENETUNREACH){
+                EasyError("connect() error : soft error");
+            }else{
+                EasyError("connect() error ");
+            }
         }else{
             // connect 是客户端向服务器端发起的，所以日志里应该写入服务器的信息
             std::string log_msg = "Connect() done ! Serv ip: ";
@@ -63,7 +73,11 @@ namespace Su{
     int Bind(const int & sockfd,struct sockaddr_in & servaddr,socklen_t addrlen){
         int result = bind(sockfd,(struct sockaddr*)&servaddr,addrlen);
         if(result==-1){
-            EasyError("bind() error !");
+            if(errno == EADDRINUSE){
+                EasyError("bind() error: Address already in use ");
+            }
+            else EasyError("bind() error");
+            exit(1);
         }else{
             std::string log_msg = "Bind done() port : ";
             //待写入
@@ -93,6 +107,8 @@ namespace Su{
             char ipadress[INET_ADDRSTRLEN];
             inet_ntop(AF_INET,&client_addr.sin_addr,ipadress,sizeof(ipadress)); 
             log_msg += std::string(ipadress);
+            log_msg += " port :";
+            log_msg += std::to_string(ntohs(client_addr.sin_port));
             sock_log_info(log_msg);
         }
         return result;
@@ -117,8 +133,24 @@ namespace Su{
         return true;
     }
 
-    bool wrtien(int sockfd,void * buf,ssize_t writelen){
-        
+    bool writen(int sockfd,void * buf,ssize_t writelen){
+        size_t nleft;
+        ssize_t nwritten;
+        const char * ptr;
+        ptr = (char*)buf;
+        nleft = writelen;
+        while(nleft > 0){
+            if ((nwritten = write(sockfd,ptr,nleft)) <=0){
+                if(nwritten <0 && errno == EINTR){
+                    nwritten = 0;
+                }else{
+                    return false;
+                }
+            }
+            nleft -= nwritten;
+            ptr += nwritten;
+        }
+        return true;
     }
 
     

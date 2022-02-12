@@ -17,8 +17,11 @@ namespace Su{
         void init();  //启动
         void accept();  // 接受客户端
         sockaddr_in get_client();  //返回客户结构体用于操作
+        int get_connfd();
+        int get_listenfd();
     private:
-        int m_sockfd;   //每个连接对应的sockfd
+        int m_listenfd;   //listenfd
+        int m_connfd;    //connfd
         struct sockaddr_in m_serv_addr,m_client_addr;
         const int m_port;  //服务器启动的port
     };
@@ -29,6 +32,7 @@ namespace Su{
     public:
         TCPclient(std::string serv_adres,int port);
         void connect();
+        int get_sockfd();
     private:
         int m_sockfd;
         std::string m_serv_adres;

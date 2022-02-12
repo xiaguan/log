@@ -11,7 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/root/workspace/log/lib/func.cpp" "lib/CMakeFiles/Su.dir/func.cpp.o" "gcc" "lib/CMakeFiles/Su.dir/func.cpp.o.d"
   "/root/workspace/log/lib/log.cpp" "lib/CMakeFiles/Su.dir/log.cpp.o" "gcc" "lib/CMakeFiles/Su.dir/log.cpp.o.d"
   "/root/workspace/log/lib/mysock.cpp" "lib/CMakeFiles/Su.dir/mysock.cpp.o" "gcc" "lib/CMakeFiles/Su.dir/mysock.cpp.o.d"
-  "/root/workspace/log/lib/socket.cpp" "lib/CMakeFiles/Su.dir/socket.cpp.o" "gcc" "lib/CMakeFiles/Su.dir/socket.cpp.o.d"
+  "/root/workspace/log/lib/oop_sock.cpp" "lib/CMakeFiles/Su.dir/oop_sock.cpp.o" "gcc" "lib/CMakeFiles/Su.dir/oop_sock.cpp.o.d"
   )
 
 # Targets to which this target links.

@@ -31,6 +31,19 @@ namespace Su{
         auto result = std::chrono::duration<double,std::ratio<1,1000>>(end-start);
         return result;
     }
+
+    //打印数据的二进制形式
+    template <typename T>
+    void print_in_two(T  t){
+    char * ptr = (char *)&t;
+    int n = sizeof(t);
+    for(int i = 0;i<n;i++){
+        for(int j = 0;j<4;j++){
+            std::cout << (ptr[i] >> j &1);
+        }
+    }
+    std::cout << '\n';
+}
 }
 
 #endif //LOG_FUN_H

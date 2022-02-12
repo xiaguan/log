@@ -4,6 +4,9 @@
 test/CMakeFiles/client.dir/client.cpp.o
  /root/workspace/log/test/client.cpp
  /usr/include/stdc-predef.h
+ /root/workspace/log/lib/oop_sock.h
+ /root/workspace/log/lib/mysock.h
+ /root/workspace/log/lib/log.h
  /opt/rh/devtoolset-11/root/usr/include/c++/11/iostream
  /opt/rh/devtoolset-11/root/usr/include/c++/11/x86_64-redhat-linux/bits/c++config.h
  /usr/include/bits/wordsize.h
@@ -145,8 +148,6 @@ test/CMakeFiles/client.dir/client.cpp.o
  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/ostream.tcc
  /opt/rh/devtoolset-11/root/usr/include/c++/11/istream
  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/istream.tcc
- /root/workspace/log/lib/mysock.h
- /root/workspace/log/lib/log.h
  /usr/include/inttypes.h
  /opt/rh/devtoolset-11/root/usr/include/c++/11/memory
  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/stl_uninitialized.h
@@ -224,16 +225,12 @@ test/CMakeFiles/client.dir/client.cpp.o
  /usr/include/bits/confname.h
  /usr/include/getopt.h
  /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h
- /root/workspace/log/lib/log.h
- /root/workspace/log/lib/socket.h
- /root/workspace/log/lib/mysock.h
- /root/workspace/log/lib/func.h
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/thread
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/std_thread.h
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/this_thread_sleep.h
  /opt/rh/devtoolset-11/root/usr/include/c++/11/chrono
  /opt/rh/devtoolset-11/root/usr/include/c++/11/ratio
  /opt/rh/devtoolset-11/root/usr/include/c++/11/limits
  /opt/rh/devtoolset-11/root/usr/include/c++/11/ctime
  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/parse_numbers.h
- /opt/rh/devtoolset-11/root/usr/include/c++/11/thread
- /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/std_thread.h
- /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/this_thread_sleep.h
 

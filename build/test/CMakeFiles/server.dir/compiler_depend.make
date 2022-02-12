@@ -3,7 +3,7 @@
 
 test/CMakeFiles/server.dir/serv.cpp.o: ../test/serv.cpp \
   /usr/include/stdc-predef.h \
-  ../lib/socket.h \
+  ../lib/oop_sock.h \
   ../lib/mysock.h \
   ../lib/log.h \
   /opt/rh/devtoolset-11/root/usr/include/c++/11/iostream \
@@ -223,8 +223,26 @@ test/CMakeFiles/server.dir/serv.cpp.o: ../test/serv.cpp \
   /usr/include/bits/environments.h \
   /usr/include/bits/confname.h \
   /usr/include/getopt.h \
-  /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/thread \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/std_thread.h \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/this_thread_sleep.h \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/chrono \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/ratio \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/limits \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/ctime \
+  /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/parse_numbers.h
 
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/parse_numbers.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/ratio:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/chrono:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/this_thread_sleep.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/std_thread.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h:
 
@@ -264,6 +282,8 @@ test/CMakeFiles/server.dir/serv.cpp.o: ../test/serv.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/ext/alloc_traits.h:
 
+../lib/oop_sock.h:
+
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/string_view.tcc:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/ostream.tcc:
@@ -271,6 +291,8 @@ test/CMakeFiles/server.dir/serv.cpp.o: ../test/serv.cpp \
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/streambuf.tcc:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/locale_classes.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/limits:
 
 /usr/include/bits/pthreadtypes.h:
 
@@ -297,6 +319,8 @@ test/CMakeFiles/server.dir/serv.cpp.o: ../test/serv.cpp \
 /opt/rh/devtoolset-11/root/usr/include/c++/11/x86_64-redhat-linux/bits/error_constants.h:
 
 /usr/include/bits/byteswap.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/ctime:
 
 /usr/include/sched.h:
 
@@ -360,13 +384,13 @@ test/CMakeFiles/server.dir/serv.cpp.o: ../test/serv.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/list:
 
-/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/refwrap.h:
-
-/usr/include/sys/cdefs.h:
-
 /opt/rh/devtoolset-11/root/usr/include/c++/11/cctype:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/pstl/pstl_config.h:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/bits/refwrap.h:
+
+/usr/include/sys/cdefs.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/postypes.h:
 
@@ -436,8 +460,6 @@ test/CMakeFiles/server.dir/serv.cpp.o: ../test/serv.cpp \
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/new:
 
-../lib/socket.h:
-
 /opt/rh/devtoolset-11/root/usr/include/c++/11/x86_64-redhat-linux/bits/atomic_word.h:
 
 /usr/include/_G_config.h:
@@ -459,10 +481,6 @@ test/CMakeFiles/server.dir/serv.cpp.o: ../test/serv.cpp \
 /opt/rh/devtoolset-11/root/usr/include/c++/11/system_error:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/exception.h:
-
-/usr/include/bits/select.h:
-
-/usr/include/errno.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/locale_classes.tcc:
 
@@ -497,6 +515,8 @@ test/CMakeFiles/server.dir/serv.cpp.o: ../test/serv.cpp \
 /usr/include/xlocale.h:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/exception:
+
+/opt/rh/devtoolset-11/root/usr/include/c++/11/thread:
 
 /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/alloc_traits.h:
 
@@ -537,6 +557,10 @@ test/CMakeFiles/server.dir/serv.cpp.o: ../test/serv.cpp \
 /usr/include/sys/types.h:
 
 /usr/include/sys/select.h:
+
+/usr/include/errno.h:
+
+/usr/include/bits/select.h:
 
 /usr/include/alloca.h:
 

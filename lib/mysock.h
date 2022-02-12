@@ -38,7 +38,7 @@ namespace Su{
 
     bool readn(int sockfd,void * buf,ssize_t readlen);
 
-    bool wrtien(int sockfd,void * buf,ssize_t writelen);
+    bool writen(int sockfd,void * buf,ssize_t writelen);
     
 }
 

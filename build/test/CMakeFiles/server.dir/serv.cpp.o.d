@@ -1,5 +1,5 @@
 test/CMakeFiles/server.dir/serv.cpp.o: /root/workspace/log/test/serv.cpp \
- /usr/include/stdc-predef.h /root/workspace/log/lib/socket.h \
+ /usr/include/stdc-predef.h /root/workspace/log/lib/oop_sock.h \
  /root/workspace/log/lib/mysock.h /root/workspace/log/lib/log.h \
  /opt/rh/devtoolset-11/root/usr/include/c++/11/iostream \
  /opt/rh/devtoolset-11/root/usr/include/c++/11/x86_64-redhat-linux/bits/c++config.h \
@@ -187,4 +187,12 @@ test/CMakeFiles/server.dir/serv.cpp.o: /root/workspace/log/test/serv.cpp \
  /usr/include/arpa/inet.h /usr/include/unistd.h \
  /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
  /usr/include/bits/confname.h /usr/include/getopt.h \
- /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/stdlib.h \
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/thread \
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/std_thread.h \
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/this_thread_sleep.h \
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/chrono \
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/ratio \
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/limits \
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/ctime \
+ /opt/rh/devtoolset-11/root/usr/include/c++/11/bits/parse_numbers.h

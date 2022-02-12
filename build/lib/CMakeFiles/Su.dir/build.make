@@ -111,26 +111,26 @@ lib/CMakeFiles/Su.dir/mysock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Su.dir/mysock.cpp.s"
 	cd /root/workspace/log/build/lib && /opt/rh/devtoolset-11/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/workspace/log/lib/mysock.cpp -o CMakeFiles/Su.dir/mysock.cpp.s
 
-lib/CMakeFiles/Su.dir/socket.cpp.o: lib/CMakeFiles/Su.dir/flags.make
-lib/CMakeFiles/Su.dir/socket.cpp.o: ../lib/socket.cpp
-lib/CMakeFiles/Su.dir/socket.cpp.o: lib/CMakeFiles/Su.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/workspace/log/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object lib/CMakeFiles/Su.dir/socket.cpp.o"
-	cd /root/workspace/log/build/lib && /opt/rh/devtoolset-11/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT lib/CMakeFiles/Su.dir/socket.cpp.o -MF CMakeFiles/Su.dir/socket.cpp.o.d -o CMakeFiles/Su.dir/socket.cpp.o -c /root/workspace/log/lib/socket.cpp
+lib/CMakeFiles/Su.dir/oop_sock.cpp.o: lib/CMakeFiles/Su.dir/flags.make
+lib/CMakeFiles/Su.dir/oop_sock.cpp.o: ../lib/oop_sock.cpp
+lib/CMakeFiles/Su.dir/oop_sock.cpp.o: lib/CMakeFiles/Su.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/workspace/log/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object lib/CMakeFiles/Su.dir/oop_sock.cpp.o"
+	cd /root/workspace/log/build/lib && /opt/rh/devtoolset-11/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT lib/CMakeFiles/Su.dir/oop_sock.cpp.o -MF CMakeFiles/Su.dir/oop_sock.cpp.o.d -o CMakeFiles/Su.dir/oop_sock.cpp.o -c /root/workspace/log/lib/oop_sock.cpp
 
-lib/CMakeFiles/Su.dir/socket.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Su.dir/socket.cpp.i"
-	cd /root/workspace/log/build/lib && /opt/rh/devtoolset-11/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/workspace/log/lib/socket.cpp > CMakeFiles/Su.dir/socket.cpp.i
+lib/CMakeFiles/Su.dir/oop_sock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Su.dir/oop_sock.cpp.i"
+	cd /root/workspace/log/build/lib && /opt/rh/devtoolset-11/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/workspace/log/lib/oop_sock.cpp > CMakeFiles/Su.dir/oop_sock.cpp.i
 
-lib/CMakeFiles/Su.dir/socket.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Su.dir/socket.cpp.s"
-	cd /root/workspace/log/build/lib && /opt/rh/devtoolset-11/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/workspace/log/lib/socket.cpp -o CMakeFiles/Su.dir/socket.cpp.s
+lib/CMakeFiles/Su.dir/oop_sock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Su.dir/oop_sock.cpp.s"
+	cd /root/workspace/log/build/lib && /opt/rh/devtoolset-11/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/workspace/log/lib/oop_sock.cpp -o CMakeFiles/Su.dir/oop_sock.cpp.s
 
 # Object files for target Su
 Su_OBJECTS = \
 "CMakeFiles/Su.dir/func.cpp.o" \
 "CMakeFiles/Su.dir/log.cpp.o" \
 "CMakeFiles/Su.dir/mysock.cpp.o" \
-"CMakeFiles/Su.dir/socket.cpp.o"
+"CMakeFiles/Su.dir/oop_sock.cpp.o"
 
 # External object files for target Su
 Su_EXTERNAL_OBJECTS =
@@ -138,7 +138,7 @@ Su_EXTERNAL_OBJECTS =
 lib/libSu.so: lib/CMakeFiles/Su.dir/func.cpp.o
 lib/libSu.so: lib/CMakeFiles/Su.dir/log.cpp.o
 lib/libSu.so: lib/CMakeFiles/Su.dir/mysock.cpp.o
-lib/libSu.so: lib/CMakeFiles/Su.dir/socket.cpp.o
+lib/libSu.so: lib/CMakeFiles/Su.dir/oop_sock.cpp.o
 lib/libSu.so: lib/CMakeFiles/Su.dir/build.make
 lib/libSu.so: lib/CMakeFiles/Su.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/workspace/log/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libSu.so"
