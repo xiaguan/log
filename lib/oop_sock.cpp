@@ -4,13 +4,14 @@
 #include "oop_sock.h"
 
 
-namespace Su{
+namespace su{
 
     // TCPserver 的相关函数
     TCPserver::TCPserver(int port):m_port(port){}
     void TCPserver::init(){
+        init_logger(false);
         //sockfd 获取
-        m_listenfd = Su::Socket(AF_INET,SOCK_STREAM,0);
+        m_listenfd = Socket(AF_INET,SOCK_STREAM,0);
 
         //填充服务器结构体;
         bzero(&m_serv_addr,sizeof(m_serv_addr));
@@ -18,17 +19,17 @@ namespace Su{
         inet_pton(AF_INET,"127.0.0.1",&m_serv_addr.sin_addr);
         m_serv_addr.sin_port = htons(m_port);
         
-        Su::Bind(m_listenfd,m_serv_addr,sizeof(m_serv_addr));
-        Su::Listen(m_listenfd,5);
+        Bind(m_listenfd,m_serv_addr,sizeof(m_serv_addr));
+        Listen(m_listenfd,5);
         //成功启动
     }
 
     void TCPserver::accept(){
         socklen_t sz = sizeof(m_client_addr);
-        m_connfd = Su::Accept(m_listenfd,m_client_addr,&sz);
+        m_connfd = Accept(m_listenfd,m_client_addr,&sz);
     }
 
-    struct sockaddr_in Su::TCPserver::get_client() {return m_client_addr;};
+    struct sockaddr_in TCPserver::get_client() {return m_client_addr;};
     int TCPserver::get_connfd() {return m_connfd;}
     int TCPserver::get_listenfd(){return m_listenfd;}
 
@@ -36,6 +37,7 @@ namespace Su{
     //TCPclient 相关函数
     TCPclient::TCPclient(std::string serv_adres,int port):
     m_serv_adres(std::move(serv_adres)),m_serv_port(std::move(port)){
+        init_logger(true);
         m_sockfd = Socket(AF_INET,SOCK_STREAM,0);
         bzero(&m_serv_addr,sizeof(m_serv_addr));
         m_serv_addr.sin_family = AF_INET;
@@ -45,7 +47,7 @@ namespace Su{
 
     void TCPclient::connect() {
         socklen_t sz = sizeof(m_serv_addr);
-        Su::Connect(m_sockfd,m_serv_addr,sz);
+        Connect(m_sockfd,m_serv_addr,sz);
     }
 
     int TCPclient::get_sockfd(){

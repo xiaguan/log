@@ -8,7 +8,7 @@
 #include "mysock.h"
 
 
-namespace Su{
+namespace su{
 
     //TCPserver的封装
     class TCPserver{

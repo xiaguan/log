@@ -1,9 +1,0 @@
-/root/workspace/log/build/CMakeFiles/rebuild_cache.dir
-/root/workspace/log/build/CMakeFiles/edit_cache.dir
-/root/workspace/log/build/lib/CMakeFiles/edit_cache.dir
-/root/workspace/log/build/lib/CMakeFiles/rebuild_cache.dir
-/root/workspace/log/build/lib/CMakeFiles/Su.dir
-/root/workspace/log/build/test/CMakeFiles/rebuild_cache.dir
-/root/workspace/log/build/test/CMakeFiles/edit_cache.dir
-/root/workspace/log/build/test/CMakeFiles/server.dir
-/root/workspace/log/build/test/CMakeFiles/client.dir

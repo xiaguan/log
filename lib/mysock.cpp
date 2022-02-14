@@ -3,15 +3,17 @@
 //
 #include "mysock.h"
 
+#include <utility>
+
 namespace su{
 
     std::shared_ptr<log::Logger> logger = nullptr;
 
     void init_logger(bool is_client){
         if(is_client){
-            logger = su::sock_logger::getInstance("client");
+            logger = new_logger("client");
         }else{
-            logger = su::sock_logger::getInstance("server");
+            logger = new_logger("server");
         }
     }
 //封装过的socket函数，成功时写入日志，失败返回-1，并终止程序；
@@ -136,12 +138,11 @@ namespace su{
         return true;
     }
 
-
-    sock_logger::sock_logger(std::string name) {
-        m_logger = std::make_shared<log::Logger>(name);
+    std::shared_ptr<log::Logger> new_logger(std::string loggername){
+        std::shared_ptr<log::Logger> logger1 = std::make_shared<log::Logger>(loggername);
 
         auto std_out = std::make_shared<su::log::StdOutputAppender>();
-        auto file_out = std::make_shared<su::log::FileOutputAppender>(name+".txt");
+        auto file_out = std::make_shared<su::log::FileOutputAppender>(logger1->get_name()+".txt");
 
         std_out->set_level(su::log::Level::DEBUG);
         file_out->set_level(su::log::Level::ERROR);
@@ -150,15 +151,11 @@ namespace su{
         std_out->set_format(fmt);
         file_out->set_format(fmt);
 
-        m_logger->add_appender(std_out);
-        m_logger->add_appender(file_out);
-    }
+        logger1->add_appender(std_out);
+        logger1->add_appender(file_out);
 
-    std::shared_ptr<log::Logger> sock_logger::getInstance(std::string name) {
-        static sock_logger m_sock_logger(name);
-        return su::sock_logger::m_logger;
+        return logger1;
     }
-
 
 }
 

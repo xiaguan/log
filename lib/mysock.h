@@ -35,17 +35,7 @@ namespace su{
     bool writen(int sockfd,void * buf,ssize_t writelen);
 
     void init_logger(bool is_client);
-
-    class sock_logger{
-    public:
-        static std::shared_ptr<log::Logger> getInstance(std::string name);
-    private:
-        explicit sock_logger(std::string name);
-        static std::shared_ptr<log::Logger> m_logger;
-    };
-    std::shared_ptr<log::Logger> sock_logger::m_logger = nullptr;
-
-    
+    std::shared_ptr<log::Logger> new_logger(std::string loggername);
 }
 
 #endif //LOG_MYSOCK_H

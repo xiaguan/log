@@ -5,17 +5,18 @@
 #include <oop_sock.h>
 #include <thread>
 #include <vector>
+#include <mysock.h>
 
 using namespace std;
 int cnt = 0;
 
 void test(){
     cnt++;
-    Su::TCPclient my_client("127.0.0.1",4567);
+    su::TCPclient my_client("127.0.0.1",4567);
     my_client.connect();
     char buf[20] = "hello world";
-    Su::writen(my_client.get_sockfd(),buf,20);
-    Su::readn(my_client.get_sockfd(),buf,20);
+    su::writen(my_client.get_sockfd(),buf,20);
+    su::readn(my_client.get_sockfd(),buf,20);
     std::cout <<"Get from server " << buf <<std::endl;
     close(my_client.get_sockfd());
 }

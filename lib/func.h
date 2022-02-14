@@ -16,7 +16,6 @@ namespace Su{
     std::thread join_thread(std::function<T> new_func,const
     std::string & msg){
         std::thread new_thread(new_func);
-        Su::sylar_log_write(msg,Su::LogLevel::INFO);
         return std::move(new_thread);
     }
 
