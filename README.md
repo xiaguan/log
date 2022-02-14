@@ -14,3 +14,6 @@
 ## 后续
    sock学完会把sock和oop_sock进行完善，同时加入一些其他板块的东西，比如：线程和epoll，协程什么的
    不过还有好久，可以先star。预计一个月内上线sock部分。
+   
+ ### 如何运行
+   chmod -R 777 install.sh | ./install.sh
