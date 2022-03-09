@@ -37,7 +37,7 @@ namespace Su{
     char * ptr = (char *)&t;
     int n = sizeof(t);
     for(int i = 0;i<n;i++){
-        for(int j = 0;j<4;j++){
+        for(int j = 0;j<8;j++){
             std::cout << (ptr[i] >> j &1);
         }
     }

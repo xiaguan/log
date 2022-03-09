@@ -293,7 +293,9 @@ namespace su{
             m_level = level;
         }
 
-        Logger::Logger(std::string name):m_name(std::move(name)) {}
+        Logger::Logger(std::string name):m_name(std::move(name)) {
+            m_fmt(new Formatter("%d{%Y-%m-%d %H:%M:%S}%T%t%T%T%T[%p]%T[%c]%T%f:%l%T%m%n"));
+        }
 
         bool FileOutputAppender::reopen() {
             std::ifstream in(m_file_name);
@@ -327,6 +329,9 @@ namespace su{
         }
 
         void Logger::add_appender(Appender::ptr appender) {
+            if(!appender->get_fmt()){
+                appender->set_format(m_fmt);
+            }
             m_appenders.emplace_back(appender);
         }
 

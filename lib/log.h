@@ -175,11 +175,13 @@ namespace su{
             //设置级别
             void set_level(Level level = Level::DEBUG);
 
+            Formatter::ptr get_fmt() const {return m_fmt;}
+
             virtual ~Appender() = default;
 
         protected:
             Level m_level;  //达到级别才进行输出
-            Formatter::ptr m_fmt;
+            Formatter::ptr m_fmt{nullptr};
         };
 
         //设计第一个输出器，标准输出
