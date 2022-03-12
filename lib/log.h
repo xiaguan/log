@@ -20,7 +20,8 @@
 #include <iomanip>
 #include <thread>
 #include <mutex>
-#include <util.h>
+#include "util/util.h"
+#include "util/singleton.h"
 
 static time_t get_time_now(){
     auto time_now = std::chrono::system_clock::now();
@@ -47,8 +48,7 @@ SU_LOG_LEVEL(logger,su::log::Level::FATAL)
 #define SU_LOG_INFO(logger) \
 SU_LOG_LEVEL(logger,su::log::Level::INFO)
 
-#define SU_LOG_ROOT su::log::Single_logger::getInstance() //NOLINT
-
+#define SU_LOG_ROOT su::log::LoggerMgr::GetInstance()->getLogger("root")
 
 
 namespace su{
@@ -209,6 +209,8 @@ namespace su{
 
             bool reopen();
 
+            ~FileOutputAppender();
+
         private:
             const std::string m_file_name;
             //文件流
@@ -259,27 +261,19 @@ namespace su{
             Event::ptr m_event;
         };
 
-
-        template<class T, class X = void, int N = 0>
-        class SingletonPtr {
+        class LoggerManager{
         public:
-            /**
-             * @brief 返回单例智能指针
-             */
-            static std::shared_ptr<T> GetInstance() {
-                static std::shared_ptr<T> v(new T);
-                return v;
-                //return GetInstancePtr<T, X, N>();
-            }
-        };
+            LoggerManager();
 
-        class Single_logger{
-        public:
-            static Logger::ptr getInstance();
+            std::shared_ptr<Logger> getLogger(const std::string & name);
+
+            void init();
         private:
-            Single_logger();
-            static std::shared_ptr<Single_logger> m_single;
+            std::map<std::string,Logger::ptr> m_loggers;
+            std::shared_ptr<Logger> m_root;
         };
+
+        typedef su::Singleton<LoggerManager> LoggerMgr;
 
 
     }

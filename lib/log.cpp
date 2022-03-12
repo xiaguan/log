@@ -5,6 +5,7 @@
 
 #include "log.h"
 
+#include <memory>
 #include <utility>
 
 
@@ -306,7 +307,7 @@ namespace su{
             m_filestream.open(m_file_name);
             if(!m_filestream.is_open()){
                 if(!reopen()){
-                    std::cout <<"file open eror"<<std::endl;
+                    std::cout <<"file open error"<<std::endl;
                 }
             }
         }
@@ -343,6 +344,10 @@ namespace su{
             m_fmt->format(m_filestream,event->get_logger(),event);
         }
 
+        FileOutputAppender::~FileOutputAppender() {
+            m_filestream.close();
+        }
+
         EventWrap::EventWrap(Event::ptr event):m_event(std::move(event)){}
 
         EventWrap::~EventWrap() {
@@ -355,28 +360,22 @@ namespace su{
         }
 
 
-        Logger::ptr Single_logger::getInstance() {
-            static Single_logger singleLogger;
-            return SingletonPtr<Logger>::GetInstance();
+        LoggerManager::LoggerManager() {
+            m_root = std::make_shared<Logger>();
+
+            m_root->add_appender(Appender::ptr(new StdOutputAppender));
+
+            Appender::ptr file_appender(new FileOutputAppender("root.txt"));
+            file_appender->set_level(Level::DEBUG);
+
+            m_root->add_appender(file_appender);
+
+            m_root->set_fmt(std::make_shared<Formatter>("d{%Y-%m-%d %H:%M:%S}%T%t%T%T%T[%p]%T[%c]%T%f:%l%T%m%n"));
         }
 
-        Single_logger::Single_logger() {
-
-            auto logger = SingletonPtr<Logger>::GetInstance();
-
-            auto std_out = std::make_shared<su::log::StdOutputAppender>();
-            auto file_out = std::make_shared<su::log::FileOutputAppender>("./log.txt");
-
-            std_out->set_level(su::log::Level::DEBUG);
-            file_out->set_level(su::log::Level::ERROR);
-
-            auto fmt = std::make_shared<su::log::Formatter>("%d{%Y-%m-%d %H:%M:%S}%T%t%T[%p]%T[%c]%T%f:%l%T%m%n");
-            std_out->set_format(fmt);
-            file_out->set_format(fmt);
-
-            logger->add_appender(std_out);
-            logger->add_appender(file_out);
+        std::shared_ptr<Logger> LoggerManager::getLogger(const std::string &name) {
+            auto it = m_loggers.find(name);
+            return it == m_loggers.end()?m_root:it->second;
         }
-
     }
 }
