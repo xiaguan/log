@@ -1,1 +1,0 @@
-add_library(Su SHARED func.cpp log.cpp mysock.cpp oop_sock.cpp)

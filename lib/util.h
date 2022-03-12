@@ -9,7 +9,7 @@
 #include <chrono>
 #include <thread>
 
-namespace Su{
+namespace su{
 
     //多线程加入函数
     template <typename T>
@@ -42,7 +42,32 @@ namespace Su{
         }
     }
     std::cout << '\n';
-}
+    }
+
+    // time counter
+    class Timer{
+        public:
+        Timer() = default;
+        Timer(const Timer & other) = delete;
+        
+        //start the clock
+        void start() noexcept {
+            begin = std::chrono::high_resolution_clock::now();
+        }
+
+        // cout the result
+        void end(){
+            auto end = std::chrono::high_resolution_clock::now();
+            auto result = std::chrono::duration<double,std::ratio<1,1000>>(end-begin);
+            std::cout <<"Timer live for "<<result.count() <<" ms"<<std::endl;
+        }
+
+
+        private:
+        decltype(std::chrono::high_resolution_clock::now()) begin;
+    };
+
+    unsigned long long GetThreadId();
 }
 
 #endif //LOG_FUN_H

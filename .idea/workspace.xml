@@ -14,13 +14,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/func.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/func.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/log.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/log.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/log.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/log.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/serv.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/serv.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="Changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +113,7 @@
       <workItem from="1641896194584" duration="741000" />
       <workItem from="1642323430395" duration="22000" />
       <workItem from="1646829481443" duration="1133000" />
-      <workItem from="1646831061585" duration="325000" />
+      <workItem from="1646831061585" duration="745000" />
     </task>
     <servers />
   </component>

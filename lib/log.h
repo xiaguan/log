@@ -20,6 +20,7 @@
 #include <iomanip>
 #include <thread>
 #include <mutex>
+#include <util.h>
 
 static time_t get_time_now(){
     auto time_now = std::chrono::system_clock::now();
@@ -29,7 +30,7 @@ static time_t get_time_now(){
 
 
 #define SU_LOG_LEVEL(logger, level) \
-         su::log::EventWrap(std::make_shared<su::log::Event>(__FILE__,__LINE__,0,get_time_now(),level,logger)).getSS()
+         su::log::EventWrap(std::make_shared<su::log::Event>(__FILE__,__LINE__,su::GetThreadId(),get_time_now(),level,logger)).getSS()
 
 #define SU_LOG_DEBUG(logger) \
 SU_LOG_LEVEL(logger,su::log::Level::DEBUG)
@@ -82,7 +83,7 @@ namespace su{
 
             unsigned int get_line() const { return m_line; }
 
-            unsigned int get_thread_id() const { return m_thread_id; }
+            unsigned long long  get_thread_id() const { return m_thread_id; }
 
             Level get_level() const { return m_level; }
 
@@ -95,7 +96,7 @@ namespace su{
             std::stringstream m_log_content;   //日志消息内容
             std::string m_file_name;     // 日志中要输出的文件名
             unsigned int m_line;    //行号
-            unsigned int m_thread_id;  //线程号
+            unsigned long long  m_thread_id;  //线程号
             std::time_t m_time;   //发生的时间
             std::shared_ptr<Logger> m_logger;
 

@@ -294,7 +294,7 @@ namespace su{
         }
 
         Logger::Logger(std::string name):m_name(std::move(name)) {
-            m_fmt(new Formatter("%d{%Y-%m-%d %H:%M:%S}%T%t%T%T%T[%p]%T[%c]%T%f:%l%T%m%n"));
+            m_fmt = std::make_shared<Formatter>("%d{%Y-%m-%d %H:%M:%S}%T%t%T%T%T[%p]%T[%c]%T%f:%l%T%m%n");
         }
 
         bool FileOutputAppender::reopen() {

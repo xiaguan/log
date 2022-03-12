@@ -86,7 +86,6 @@ namespace su{
         }
 
     private:
-        using size_t = unsigned long long int;
         std::allocator<elementType> m_allocator;
 
         elementType *elements;  //指向数组首元素的指针
