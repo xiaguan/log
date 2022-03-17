@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.15)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_BUILD_TYPE Release)
+#set(CMAKE_BUILD_TYPE Release)
 
 project(lib_test)
 
@@ -11,10 +11,13 @@ project(lib_test)
 # 不同平台生成不同库
 if(UNIX)
     aux_source_directory(./lib LIB_SRCS)
+    aux_source_directory(./lib/TinyStl LIB_SRCS)
+    aux_source_directory(./lib/util LIB_SRCS)
     add_library(su OBJECT ${LIB_SRCS})
 elseif(WIN32)
     aux_source_directory(./lib/TinyStl LIB_SRCS)
-    add_library(su OBJECT ./lib/log.cpp ./lib/util.cpp ${LIB_SRCS})
+    aux_source_directory(./lib/util LIB_SRCS)
+    add_library(su OBJECT ${PROJECT_SOURCE_DIR}/lib/log.cpp ${LIB_SRCS})
 endif()
 
 include_directories(./lib)
