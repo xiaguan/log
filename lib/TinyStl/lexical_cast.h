@@ -71,7 +71,11 @@ namespace detail{
         }
     };
 
-    template <typename To, typename From>
+    
+
+}
+
+template <typename To, typename From>
     typename std::enable_if<!std::is_same<To, From>::value, To>::type lexical_cast(const From& from)
     {
         return detail::Converter<To, From>::convert(from);
@@ -82,7 +86,5 @@ namespace detail{
     {
         return from;
     }
-
-}
 
 #endif //LIB_TEST_LEXICAL_CAST_H

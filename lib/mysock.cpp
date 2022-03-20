@@ -62,20 +62,20 @@ namespace su{
                 SU_LOG_ERROR(logger) <<"bind() error: Address already in use ";
             }
             else {
-                SU_LOG_ERROR(logger) <<"bind() error !";
+                SU_LOG_ERROR(logger) <<"bind() error ! " << errno;
             }
             exit(1);
         }else{
             SU_LOG_DEBUG(logger) << "Bind done() port : ";
             SU_LOG_DEBUG(logger) << std::to_string(ntohs(servaddr.sin_port));
         }
-        return result;
+        return sockfd;
     }
 
     int Listen(const int& sockfd, const int & backlog){
         int result = listen(sockfd,backlog);
         if(result == -1){
-            SU_LOG_ERROR(logger) <<"Listen() ERROR";
+            SU_LOG_ERROR(logger) <<"Listen() ERROR "<<errno;
         }else{
             SU_LOG_DEBUG(logger) << "listen() done ";
             SU_LOG_DEBUG(logger) << std::to_string(backlog);
