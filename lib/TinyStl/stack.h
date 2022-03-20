@@ -16,6 +16,7 @@
 #include <iostream>
 #include <exception>
 #include <mutex>
+#include <cmath>
 
 namespace su{
 
@@ -38,7 +39,7 @@ namespace su{
         void push(elementType new_element){
 
             check_is_full();
-            m_allocator.template construct(first_free,new_element);first_free++;
+            m_allocator.construct(first_free,new_element);first_free++;
         }
 
         /*
@@ -46,7 +47,7 @@ namespace su{
          */
         void pop(){
             if(empty()) return;
-            m_allocator.template destroy(--first_free);
+            m_allocator.destroy(--first_free);
         }
 
         /*
@@ -62,7 +63,7 @@ namespace su{
 
         // 构造函数
         // 默认构造函数
-        explicit stack(size_t new_sz = 100){
+        explicit stack(size_t new_sz = 10){
             elements = m_allocator.allocate(new_sz);
             first_free = elements;
             cap = elements+new_sz;
@@ -71,7 +72,7 @@ namespace su{
         ~stack(){
             if(elements){
                 for(auto p = first_free; p != elements;)
-                    m_allocator.template destroy(--p);
+                    m_allocator.destroy(--p);
                 m_allocator.deallocate(elements,cap-elements);
             }
         }
@@ -101,7 +102,7 @@ namespace su{
         void free(){
             if(elements){
                 for(auto p = first_free; p != elements;)
-                    m_allocator.template destroy(--p);
+                    m_allocator.destroy(--p);
                 m_allocator.deallocate(elements,cap-elements);
             }
         }
@@ -109,14 +110,14 @@ namespace su{
         // 重新分配空间大小
         void resize(){
 
-            auto new_sz = size()?2*size():1;
+            unsigned long long  new_sz = size()?size() * 2:1;
             auto new_data = m_allocator.allocate(new_sz);
 
             auto dest = new_data;
             auto elem = elements;
 
             for(size_t i = 0; i!= size();i++){
-                m_allocator.template construct(dest++,std::move(*elem++));
+                m_allocator.construct(dest++,std::move(*elem++));
             }
 
             //释放原先的数据

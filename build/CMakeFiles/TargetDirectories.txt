@@ -1,6 +1,0 @@
-/home/susun/Desktop/log/build/CMakeFiles/rebuild_cache.dir
-/home/susun/Desktop/log/build/CMakeFiles/edit_cache.dir
-/home/susun/Desktop/log/build/CMakeFiles/test.dir
-/home/susun/Desktop/log/build/CMakeFiles/serv.dir
-/home/susun/Desktop/log/build/CMakeFiles/client.dir
-/home/susun/Desktop/log/build/CMakeFiles/su.dir

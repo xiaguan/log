@@ -1,5 +1,0 @@
-2022-03-19 08:56:36	1	[DEBUG]	[client]	../lib/mysock.cpp:25	socket done 4
-2022-03-19 08:56:36	1	[DEBUG]	[client]	../lib/mysock.cpp:69	Bind done() port : 
-2022-03-19 08:56:36	1	[DEBUG]	[client]	../lib/mysock.cpp:70	45678
-2022-03-19 08:56:36	1	[DEBUG]	[client]	../lib/mysock.cpp:80	listen() done 
-2022-03-19 08:56:36	1	[DEBUG]	[client]	../lib/mysock.cpp:81	5
