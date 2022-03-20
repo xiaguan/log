@@ -16,13 +16,14 @@ namespace su{
             logger = new_logger("server");
         }
     }
+
 //封装过的socket函数，成功时写入日志，失败返回-1，并终止程序；
     int Socket(const int& family,const int& type,const int& protocol){
         int result = socket(family,type,protocol);
         if(result == -1){
-            SU_LOG_ERROR(logger)<<"socket() error";
+            SU_LOG_ERROR(logger)<<"socket() error " << errno ;
         }else{
-            SU_LOG_DEBUG(logger) <<"socket done "+std::to_string(result);
+            SU_LOG_DEBUG(logger) <<"socket() done with sock_fd : "+std::to_string(result);
         }
         return result;
     }
@@ -35,21 +36,16 @@ namespace su{
                 SU_LOG_ERROR(logger) <<"connect() error : hard error";
             }
             else if(errno == ETIMEDOUT ){
-                SU_LOG_ERROR(logger) << "coonect() error : time out ";
+                SU_LOG_ERROR(logger) << "connect() error : time out ";
             }
             else if(errno == EHOSTDOWN || errno == ENETUNREACH){
                 SU_LOG_ERROR(logger)<<"connect() error : soft error";
             }else{
-                SU_LOG_ERROR(logger) <<"connect() error !";
+                SU_LOG_ERROR(logger) <<"connect() error ! "<<errno ;
             }
         }else{
             // connect 是客户端向服务器端发起的，所以日志里应该写入服务器的信息
-            SU_LOG_DEBUG(logger) <<"Connect() done ! Serv ip:";
-
-            char ipadress[INET_ADDRSTRLEN];
-            inet_ntop(AF_INET,&serv_addr.sin_addr,ipadress,sizeof(ipadress));
-
-            SU_LOG_DEBUG(logger) << std::string(ipadress);
+            SU_LOG_DEBUG(logger) <<"Connect() done ! Serv ip: " << stringAddress(serv_addr) <<" port : "<< getPort(serv_addr);
 
         }
         return result;
@@ -66,8 +62,7 @@ namespace su{
             }
             exit(1);
         }else{
-            SU_LOG_DEBUG(logger) << "Bind done() port : ";
-            SU_LOG_DEBUG(logger) << std::to_string(ntohs(servaddr.sin_port));
+            SU_LOG_DEBUG(logger) << "Bind done() port : " << getPort(servaddr);
         }
         return sockfd;
     }
@@ -77,8 +72,7 @@ namespace su{
         if(result == -1){
             SU_LOG_ERROR(logger) <<"Listen() ERROR "<<errno;
         }else{
-            SU_LOG_DEBUG(logger) << "listen() done ";
-            SU_LOG_DEBUG(logger) << std::to_string(backlog);
+            SU_LOG_DEBUG(logger) << "listen() done " << backlog;
         }
         return result;
     }
@@ -86,15 +80,9 @@ namespace su{
     int Accept(const int & sockfd,struct sockaddr_in & client_addr,socklen_t *addrlen){
         int result = accept(sockfd,(struct sockaddr*)&client_addr,addrlen);
         if(result == -1){
-            SU_LOG_ERROR(logger) <<"accept() error !";
+            SU_LOG_ERROR(logger) <<"accept() error ! "<<errno ;
         }else{
-            SU_LOG_DEBUG(logger) <<"Accept() done with client ip: ";
-            //待写入
-            char ipadress[INET_ADDRSTRLEN];
-            inet_ntop(AF_INET,&client_addr.sin_addr,ipadress,sizeof(ipadress));
-            SU_LOG_DEBUG(logger) << ipadress ;
-            SU_LOG_DEBUG(logger) << "port : ";
-            SU_LOG_DEBUG(logger) << std::to_string(ntohs(client_addr.sin_port)) ;
+            SU_LOG_DEBUG(logger) <<"Accept() done with client ip: " <<stringAddress(client_addr) <<" port : " <<getPort(client_addr);
         }
         return result;
     }
