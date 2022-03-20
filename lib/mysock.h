@@ -20,15 +20,9 @@ namespace su{
 
     void test();
 
-    std::string stringAddress(const sockaddr_in & addr){
-        char ip_adress[INET_ADDRSTRLEN];
-        inet_ntop(AF_INET,&serv_addr.sin_addr,ipadress,sizeof(ip_adress));
-        return std::string(ip_adress);
-    }
+    std::string getAddress(const sockaddr_in & addr);
 
-    int getPort(const sockadr_in & addr){
-        return nthons(addr.sin_port);
-    }
+    unsigned int getPort(const sockadr_in & addr);
 
     int Socket(const int& family,const int& type,const int& protocol);
 

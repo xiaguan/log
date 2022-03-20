@@ -7,6 +7,7 @@
 
 namespace su{
 
+    // sock模块的日志器
     std::shared_ptr<log::Logger> logger = nullptr;
 
     void init_logger(bool is_client){
@@ -15,6 +16,17 @@ namespace su{
         }else{
             logger = new_logger("server");
         }
+    }
+
+    std::string getAddress(const sockaddr_in & addr){
+        char ip_adress[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET,&serv_addr.sin_addr,ipadress,sizeof(ip_adress));
+        return std::string(ip_adress);
+    }
+
+    unsigned int getPort(const sockaddr_in & addr){
+        unsigned  int result = nthons(addr.sin_port);
+        return result;
     }
 
 //封装过的socket函数，成功时写入日志，失败返回-1，并终止程序；
