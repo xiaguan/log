@@ -3,33 +3,38 @@ cmake_minimum_required(VERSION 3.15)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_BUILD_TYPE Release)
+#set(CMAKE_BUILD_TYPE Release)
 
 project(lib_test)
 
+
 # 不同平台生成不同库
 if(UNIX)
-    aux_source_directory(./lib LIB_SRCS)
+    aux_source_directory(${PROJECT_SOURCE_DIR}/lib LIB_SRCS)
+    aux_source_directory(${PROJECT_SOURCE_DIR}/lib/TinyStl LIB_SRCS)
+    aux_source_directory(${PROJECT_SOURCE_DIR}/lib/util LIB_SRCS)
     add_library(su OBJECT ${LIB_SRCS})
 elseif(WIN32)
-    aux_source_directory(./lib/TinyStl LIB_SRCS)
-    aux_source_directory(./lib/util LIB_SRCS)
-    add_library(su OBJECT ./lib/log.cpp  ${LIB_SRCS})
+    aux_source_directory(${PROJECT_SOURCE_DIR}/lib/TinyStl LIB_SRCS)
+    aux_source_directory(${PROJECT_SOURCE_DIR}/lib/util LIB_SRCS)
+    add_library(su OBJECT ${PROJECT_SOURCE_DIR}/lib/log.cpp ${LIB_SRCS})
 endif()
 
-include_directories(./lib)
+include_directories(${PROJECT_SOURCE_DIR}/lib)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
 # 生成可执行文件，不同系统，不同的测试
 if(UNIX)
-    add_executable(client ./test/client.cpp)
-    add_executable(serv ./test/server.cpp)
+    add_executable(client ${PROJECT_SOURCE_DIR}/test/client.cpp)
+    add_executable(serv ${PROJECT_SOURCE_DIR}/test/server.cpp)
+    add_executable(test ${PROJECT_SOURCE_DIR}/test/test.cpp)
     target_link_libraries(client PUBLIC su Threads::Threads)
     target_link_libraries(serv PUBLIC su Threads::Threads)
+    target_link_libraries(test PUBLIC su)
 elseif(WIN32)
-    add_executable(test ./test/wintest.cpp)
+    add_executable(test ${PROJECT_SOURCE_DIR}/test/wintest.cpp)
     target_link_libraries(test su Threads::Threads)
 endif()
 

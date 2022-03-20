@@ -5,34 +5,52 @@
 
 
 namespace su{
+    //USER
+    bool User::send(char * buf,size_t len){
+        return writen(connfd,buf,len);
+    }
+
+    bool User::recv(char * buf,size_t len){
+        return readn(connfd,buf,len);
+    }
+
+    User::~User(){
+        close(connfd);
+    }
+
 
     // TCPserver 的相关函数
-    TCPserver::TCPserver(int port):m_port(port){}
+    TCPserver::TCPserver(int port):m_port(port){
+        bzero(&serv_addr,sizeof(serv_addr));
+        serv_addr.sin_family = AF_INET;
+        inet_pton(AF_INET,"127.0.0.1",&serv_addr.sin_addr);
+        serv_addr.sin_port = htons(m_port);
+    }
+    
     void TCPserver::init(){
-        init_logger(false);
-        //sockfd 获取
-        m_listenfd = Socket(AF_INET,SOCK_STREAM,0);
-
-        //填充服务器结构体;
-        bzero(&m_serv_addr,sizeof(m_serv_addr));
-        m_serv_addr.sin_family = AF_INET;
-        inet_pton(AF_INET,"127.0.0.1",&m_serv_addr.sin_addr);
-        m_serv_addr.sin_port = htons(m_port);
-        
-        Bind(m_listenfd,m_serv_addr,sizeof(m_serv_addr));
-        Listen(m_listenfd,5);
-        //成功启动
+        listenfd = Socket(AF_INET,SOCK_STREAM,0);
+        listenfd = Bind(listenfd,serv_addr,sizeof(serv_addr));
+        Listen(listenfd,5);
     }
 
-    void TCPserver::accept(){
-        socklen_t sz = sizeof(m_client_addr);
-        m_connfd = Accept(m_listenfd,m_client_addr,&sz);
+    void TCPserver::accept(User::ptr user){
+        socklen_t sz = sizeof(user->user_addr);
+        user->connfd = Accept(listenfd,user->user_addr,&sz);
     }
 
-    struct sockaddr_in TCPserver::get_client() {return m_client_addr;};
-    int TCPserver::get_connfd() {return m_connfd;}
-    int TCPserver::get_listenfd(){return m_listenfd;}
+    void TCPserver::addUser(User::ptr new_user){
+        m_users.push_back(new_user);
+    }
 
+    void TCPserver::delUser(User::ptr del_user){
+        for(auto p = m_users.begin();p != m_users.end();p++){
+            if(*p == del_user){
+                m_users.erase(p);
+                return;
+            }
+        }
+    }
+    
 
     //TCPclient 相关函数
     TCPclient::TCPclient(std::string serv_adres,int port):
@@ -50,7 +68,15 @@ namespace su{
         Connect(m_sockfd,m_serv_addr,sz);
     }
 
-    int TCPclient::get_sockfd(){
+    int TCPclient::getSockfd()const {
         return m_sockfd;
+    }
+
+    bool TCPclient::send(char * buf,size_t len){
+        return writen(m_sockfd,buf,len);
+    }
+
+    bool TCPclient::recv(char *buf,size_t len){
+        return readn(m_sockfd,buf,len);
     }
 }

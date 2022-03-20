@@ -1,26 +1,24 @@
-//
-// Created by 75108 on 2022/1/23.
-//
-
 #include <oop_sock.h>
+#include <log.h>
 #include <thread>
 
+auto logger = SU_LOG_ROOT;
 
-//
-void get_and_resend(int connfd){
-    char buf[20];
-    su::readn(connfd,buf,20);
-    std::cout <<"Read done" <<std::endl;
-    su::writen(connfd,buf,20);
-    close(connfd);
+void process_echo_user(su::User::ptr user){
+    char buf[MAX_SIZE];
+    while(user->recv(buf,MAX_SIZE)){
+        user->send(buf,MAX_SIZE);
+    }
 }
+
 int main(){
-    su::TCPserver m_server(4567);
-    m_server.init();
+    su::init_logger(false);
+    su::TCPserver::ptr m_server(new su::TCPserver(4567));
+    m_server->init();
     while(true){
-        m_server.accept();
-        std::thread t(get_and_resend,m_server.get_connfd());
+        su::User::ptr new_user(new su::User());
+        m_server->accept(new_user);
+        std::thread t(process_echo_user,new_user);
         t.detach();
     }
-    return 0;
 }

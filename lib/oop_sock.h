@@ -6,24 +6,41 @@
 #define SU_SOCKET_H
 
 #include "mysock.h"
+#include <memory>
+#include <list>
 
 
 namespace su{
 
     //TCPserver的封装
+    class TCPserver;
+    class User{
+        public:
+        friend TCPserver;
+        typedef std::shared_ptr<User> ptr;
+        bool send(char * buf,size_t len);
+        bool recv(char * buf,size_t len);
+        ~User();
+        private:
+        struct sockaddr_in user_addr;
+        int connfd;
+    };
+
     class TCPserver{
     public:
+        typedef std::shared_ptr<TCPserver> ptr;
         TCPserver(int port);
-        void init();  //启动
-        void accept();  // 接受客户端
-        sockaddr_in get_client();  //返回客户结构体用于操作
-        int get_connfd();
-        int get_listenfd();
+        void init();
+        void addUser(User::ptr new_user);
+        void delUser(User::ptr del_user);
+
+        void accept(User::ptr user);
     private:
-        int m_listenfd;   //listenfd
-        int m_connfd;    //connfd
-        struct sockaddr_in m_serv_addr,m_client_addr;
+        struct sockaddr_in serv_addr;
+        int listenfd;
         const int m_port;  //服务器启动的port
+        char buf[MAX_SIZE];
+        std::list<std::shared_ptr<User>> m_users;
     };
 
 
@@ -32,7 +49,9 @@ namespace su{
     public:
         TCPclient(std::string serv_adres,int port);
         void connect();
-        int get_sockfd();
+        int getSockfd() const ;
+        bool send(char * buf,size_t len);
+        bool recv(char * buf,size_t len);
     private:
         int m_sockfd;
         std::string m_serv_adres;
