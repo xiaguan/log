@@ -16,42 +16,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="fix sock bug">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/done_srcs/acm.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/done_srcs/stack_test.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/wintest.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="delete build">
+      <change afterPath="$PROJECT_DIR$/Examples/stack_test.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/config.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.ninja_deps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.ninja_log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeCache.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CompilerIdC/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.16.3/CompilerIdCXX/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/client.dir/test/client.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cmake.check_cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/serv.dir/test/server.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/su.dir/lib/log.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/su.dir/lib/mysock.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/su.dir/lib/oop_sock.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/su.dir/lib/util/util.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/test.dir/test/test.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/build.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/rules.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/TinyStl/stack.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/TinyStl/stack.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/TinyStl/lexical_cast.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/lexical_cast.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/oop_sock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/oop_sock.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/oop_sock.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/oop_sock.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/chat_client.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/cha_server.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/wintest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/wintest.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +81,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="N:/Students/CMakeLists.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Examples" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -115,8 +90,12 @@
     <property name="structure.view.defaults.are.configured" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="J:\log\Examples" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="J:\log\lib\util" />
+      <recent name="J:\log\Examples" />
       <recent name="J:\log" />
     </key>
   </component>
@@ -190,6 +169,7 @@
       <workItem from="1647703432517" duration="1659000" />
       <workItem from="1647741379215" duration="2353000" />
       <workItem from="1647746768762" duration="1000" />
+      <workItem from="1648041989746" duration="955000" />
     </task>
     <task id="LOCAL-00001" summary="repair log and add util folder">
       <created>1647084913047</created>

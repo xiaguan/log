@@ -39,18 +39,6 @@ namespace su{
         user->connfd = Accept(listenfd,user->user_addr,&sz);
     }
 
-    void TCPserver::addUser(User::ptr new_user){
-        m_users.push_back(new_user);
-    }
-
-    void TCPserver::delUser(User::ptr del_user){
-        for(auto p = m_users.begin();p != m_users.end();p++){
-            if(*p == del_user){
-                m_users.erase(p);
-                return;
-            }
-        }
-    }
     
 
     //TCPclient 相关函数

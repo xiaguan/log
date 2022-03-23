@@ -17,7 +17,7 @@ if(UNIX)
 elseif(WIN32)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib/TinyStl LIB_SRCS)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib/util LIB_SRCS)
-    add_library(su OBJECT ${PROJECT_SOURCE_DIR}/lib/log.cpp ${LIB_SRCS})
+    add_library(su OBJECT ${PROJECT_SOURCE_DIR}/lib/log.cpp ${PROJECT_SOURCE_DIR}/lib/config.h ${LIB_SRCS})
 endif()
 
 include_directories(${PROJECT_SOURCE_DIR}/lib)
@@ -27,7 +27,7 @@ find_package(Threads REQUIRED)
 
 # 生成可执行文件，不同系统，不同的测试
 if(UNIX)
-    add_executable(client ${PROJECT_SOURCE_DIR}/test/client.cpp)
+    add_executable(client ${PROJECT_SOURCE_DIR}/test/chat_client.cpp)
     add_executable(serv ${PROJECT_SOURCE_DIR}/test/server.cpp)
     add_executable(test ${PROJECT_SOURCE_DIR}/test/test.cpp)
     target_link_libraries(client PUBLIC su Threads::Threads)

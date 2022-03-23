@@ -7,7 +7,7 @@
 
 #include "mysock.h"
 #include <memory>
-#include <list>
+#include <map>
 
 
 namespace su{
@@ -20,10 +20,41 @@ namespace su{
         typedef std::shared_ptr<User> ptr;
         bool send(char * buf,size_t len);
         bool recv(char * buf,size_t len);
+
+        int getSockfd() const {return m_sockfd;}
         ~User();
         protected:
         struct sockaddr_in user_addr;
-        int connfd;
+        int m_sockfd;
+    };
+
+    /*
+     * 设计思路：睡觉的时候突然想到怎么定位一个客户的fd
+     * fd 具有唯一性，可以通过map查找
+     */
+    class UserManager{
+    public:
+        typedef std::shared_ptr<UserManager> ptr;
+
+        // 类函数的一些声明
+        UserManager()= default;
+        UserManager(const UserManager & a) = delete;
+
+        /*
+         * Mgr类的一些接口:增加，删除，查找
+         */
+
+         void addUser(User::ptr new_user);
+
+        // 查找
+        User::ptr findUser(int sockfd);
+
+        void delUser(int socfd);
+        void delUser(User::ptr user);
+
+
+    private:
+        std::map<int,User::ptr> users;
     };
 
     class TCPserver{
@@ -31,8 +62,6 @@ namespace su{
         typedef std::shared_ptr<TCPserver> ptr;
         TCPserver(int port);
         void init();
-        void addUser(User::ptr new_user);
-        void delUser(User::ptr del_user);
 
         void accept(User::ptr user);
 
@@ -42,7 +71,6 @@ namespace su{
         int listenfd;
         const int m_port;  //服务器启动的port
         char buf[MAX_SIZE];
-        std::list<std::shared_ptr<User>> m_users;
     };
 
 

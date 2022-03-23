@@ -33,6 +33,14 @@ namespace detail{
     };
 
     template <typename From>
+    class Converter<int,From>{
+    public:
+        static long convert(const From & from){
+            return std::stoi(from);
+        }
+    };
+
+    template <typename From>
     struct Converter<long long ,From>{
         static long long convert(const From & from){
             return std::stoll(from);
