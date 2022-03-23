@@ -4,6 +4,9 @@
 #include "mysock.h"
 
 #include <utility>
+#include <fcntl.h>
+#include <sys/poll.h>
+#include <sys/epoll.h>
 
 namespace su{
 
@@ -20,12 +23,12 @@ namespace su{
 
     std::string getAddress(const sockaddr_in & addr){
         char ip_adress[INET_ADDRSTRLEN];
-        inet_ntop(AF_INET,&serv_addr.sin_addr,ipadress,sizeof(ip_adress));
+        inet_ntop(AF_INET,&addr.sin_addr,ip_adress,sizeof(ip_adress));
         return std::string(ip_adress);
     }
 
     unsigned int getPort(const sockaddr_in & addr){
-        unsigned  int result = nthons(addr.sin_port);
+        unsigned  int result = ntohs(addr.sin_port);
         return result;
     }
 
@@ -57,7 +60,7 @@ namespace su{
             }
         }else{
             // connect 是客户端向服务器端发起的，所以日志里应该写入服务器的信息
-            SU_LOG_DEBUG(logger) <<"Connect() done ! Serv ip: " << stringAddress(serv_addr) <<" port : "<< getPort(serv_addr);
+            SU_LOG_DEBUG(logger) <<"Connect() done ! Serv ip: " << getAddress(serv_addr) <<" port : "<< getPort(serv_addr);
 
         }
         return result;
@@ -94,27 +97,31 @@ namespace su{
         if(result == -1){
             SU_LOG_ERROR(logger) <<"accept() error ! "<<errno ;
         }else{
-            SU_LOG_DEBUG(logger) <<"Accept() done with client ip: " <<stringAddress(client_addr) <<" port : " <<getPort(client_addr);
+            SU_LOG_DEBUG(logger) <<"Accept() done with client ip: " <<getAddress(client_addr) <<" port : " <<getPort(client_addr);
         }
         return result;
     }
 
     bool readn(int sockfd,void * vbuf,ssize_t readlen){
+        SU_LOG_DEBUG(logger) <<"readn() start ";
         //这里存在一个不注意就会出错的bug,循环调用read向buf的首地址写入
         int already_read_len = 0;
         char * buf = (char*)vbuf;
         while(readlen){
             ssize_t n = read(sockfd,buf+already_read_len,readlen);
             if(n<0){
+                SU_LOG_DEBUG(logger) <<"readn() error";
                 return false;
             }else if(n==0){
                 //文件尾
-                return true;
+                SU_LOG_DEBUG(logger) <<"readn() with sz 0done !";
+                return false;
             }else{
                 readlen -= n;
             }
             already_read_len += n;
         }
+        SU_LOG_DEBUG(logger) <<"readn() done";
         return true;
     }
 
@@ -155,6 +162,13 @@ namespace su{
         logger1->add_appender(file_out);
 
         return logger1;
+    }
+
+    int setnonblocking(int fd){
+        int old_option = fcntl(fd,F_GETFL);
+        int new_option = old_option | O_NONBLOCK;
+        fcntl(fd,F_SETFL,new_option);
+        return old_option;
     }
 
 }

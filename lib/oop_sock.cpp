@@ -21,6 +21,7 @@ namespace su{
 
     // TCPserver 的相关函数
     TCPserver::TCPserver(int port):m_port(port){
+        init_logger(false);
         bzero(&serv_addr,sizeof(serv_addr));
         serv_addr.sin_family = AF_INET;
         inet_pton(AF_INET,"127.0.0.1",&serv_addr.sin_addr);

@@ -21,7 +21,7 @@ namespace su{
         bool send(char * buf,size_t len);
         bool recv(char * buf,size_t len);
         ~User();
-        private:
+        protected:
         struct sockaddr_in user_addr;
         int connfd;
     };
@@ -35,6 +35,8 @@ namespace su{
         void delUser(User::ptr del_user);
 
         void accept(User::ptr user);
+
+        int getListenfd() const {return listenfd;}
     private:
         struct sockaddr_in serv_addr;
         int listenfd;

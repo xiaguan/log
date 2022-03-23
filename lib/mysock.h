@@ -13,6 +13,10 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <sys/poll.h>
+#include <fcntl.h>
+#include <sys/types.h>
+
 
 const int MAX_SIZE = 1024;
 
@@ -22,7 +26,7 @@ namespace su{
 
     std::string getAddress(const sockaddr_in & addr);
 
-    unsigned int getPort(const sockadr_in & addr);
+    unsigned int getPort(const sockaddr_in & addr);
 
     int Socket(const int& family,const int& type,const int& protocol);
 
@@ -40,6 +44,8 @@ namespace su{
 
     void init_logger(bool is_client);
     std::shared_ptr<log::Logger> new_logger(std::string loggername);
+
+    int setnonblocking(int fd);
 }
 
 #endif //LOG_MYSOCK_H
