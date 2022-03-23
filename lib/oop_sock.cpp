@@ -7,15 +7,33 @@
 namespace su{
     //USER
     bool User::send(char * buf,size_t len){
-        return writen(connfd,buf,len);
+        return writen(m_sockfd,buf,len);
     }
 
     bool User::recv(char * buf,size_t len){
-        return readn(connfd,buf,len);
+        return read(m_sockfd,buf,len);
     }
 
     User::~User(){
-        close(connfd);
+        close(m_sockfd);
+    }
+
+    //UserMangger
+
+    void UserManager::addUser(User::ptr new_user){
+        users[new_user->getSockfd()] = new_user;
+    }
+
+    User::ptr UserManager::findUser(int sockfd){
+        auto it = users.find(sockfd);
+        if(it == users.end()) return nullptr;
+        else return it->second;
+    }
+
+    void UserManager::delUser(int sockfd){
+        auto it = users.find(sockfd);
+        if(it == users.end()) return ;
+        users.erase(it);
     }
 
 
@@ -36,7 +54,7 @@ namespace su{
 
     void TCPserver::accept(User::ptr user){
         socklen_t sz = sizeof(user->user_addr);
-        user->connfd = Accept(listenfd,user->user_addr,&sz);
+        user->m_sockfd = Accept(listenfd,user->user_addr,&sz);
     }
 
     

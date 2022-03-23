@@ -110,7 +110,7 @@ namespace su{
         while(readlen){
             ssize_t n = read(sockfd,buf+already_read_len,readlen);
             if(n<0){
-                SU_LOG_DEBUG(logger) <<"readn() error";
+                SU_LOG_DEBUG(logger) <<"readn() error  " <<errno;
                 return false;
             }else if(n==0){
                 //文件尾
@@ -119,6 +119,7 @@ namespace su{
             }else{
                 readlen -= n;
             }
+            SU_LOG_DEBUG(logger) <<"read "<<n;
             already_read_len += n;
         }
         SU_LOG_DEBUG(logger) <<"readn() done";
@@ -136,6 +137,7 @@ namespace su{
                 if(nwritten <0 && errno == EINTR){
                     nwritten = 0;
                 }else{
+                    SU_LOG_ERROR(logger) <<" error "<<errno ;
                     return false;
                 }
             }
