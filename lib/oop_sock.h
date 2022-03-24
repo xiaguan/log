@@ -7,7 +7,7 @@
 
 #include "mysock.h"
 #include <memory>
-#include <map>
+#include <list>
 
 
 namespace su{
@@ -54,7 +54,7 @@ namespace su{
 
 
     private:
-        std::map<int,User::ptr> users;
+        std::list<User::ptr> users;
     };
 
     class TCPserver{

@@ -67,23 +67,13 @@ int main(){
                 user->recv(buf,BUFFER_SIZE);
                 int now_fd = user->getSockfd();
 
-                for(int i = 1;i<=cnt;i++){
+                for(int j = 1;j<=cnt;j++){
                     if(fds[i].fd == now_fd) continue;
-                    SU_LOG_DEBUG(logger) <<"pollout "<<fds[i].fd;
-                    fds[i].events |= POLLOUT;
-                    fds[i].events |= ~POLLIN;
+                    auto send_to = userMgr.findUser(fds[i].fd);
+                    send_to->send(buf,BUFFER_SIZE);
                 }
                 SU_LOG_DEBUG(logger) <<"POLLIN END";
 
-            }else if(fds[i].revents & POLLOUT){
-                SU_LOG_DEBUG(logger)<<"PULLOUT READY "<<fds[i].fd;
-                auto user = userMgr.findUser(fds[i].fd);
-                if(user->send(buf,BUFFER_SIZE)){
-                    SU_LOG_DEBUG(logger) <<"send done";
-                }
-
-                fds[i].events = POLLIN | POLLRDHUP |POLLERR;
-                SU_LOG_DEBUG(logger) <<"POLLOUT END";
             }
         }   
     }

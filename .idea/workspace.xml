@@ -17,16 +17,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="delete build">
-      <change afterPath="$PROJECT_DIR$/Examples/stack_test.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/config.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/TinyStl/lexical_cast.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/lexical_cast.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/oop_sock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/oop_sock.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/oop_sock.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/oop_sock.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/chat_client.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/cha_server.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/wintest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/wintest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/server.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,11 +94,6 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake 应用程序.logexample">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="logexample" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="lib_test" RUN_TARGET_NAME="test" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -169,7 +158,8 @@
       <workItem from="1647703432517" duration="1659000" />
       <workItem from="1647741379215" duration="2353000" />
       <workItem from="1647746768762" duration="1000" />
-      <workItem from="1648041989746" duration="955000" />
+      <workItem from="1648041989746" duration="2402000" />
+      <workItem from="1648103366180" duration="386000" />
     </task>
     <task id="LOCAL-00001" summary="repair log and add util folder">
       <created>1647084913047</created>
@@ -206,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647742738395</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="delete build">
+      <created>1648042952668</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1648042952668</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +235,7 @@
     <MESSAGE value="repair log and add util folder" />
     <MESSAGE value="add lexical_cast.h" />
     <MESSAGE value="fix sock bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix sock bug" />
+    <MESSAGE value="delete build" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete build" />
   </component>
 </project>

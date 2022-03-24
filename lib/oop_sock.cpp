@@ -21,19 +21,24 @@ namespace su{
     //UserMangger
 
     void UserManager::addUser(User::ptr new_user){
-        users[new_user->getSockfd()] = new_user;
+        users.push_back(new_user);
     }
 
     User::ptr UserManager::findUser(int sockfd){
-        auto it = users.find(sockfd);
-        if(it == users.end()) return nullptr;
-        else return it->second;
+        for(auto & user :users){
+            if(user->getSockfd() == sockfd) return user;
+        }
+        return nullptr;
     }
 
     void UserManager::delUser(int sockfd){
-        auto it = users.find(sockfd);
-        if(it == users.end()) return ;
-        users.erase(it);
+        auto it = users.begin();
+        while(it != users.end()){
+            if((*it)->getSockfd() == sockfd){
+                users.erase(it);
+                return;
+            }
+        }
     }
 
 
