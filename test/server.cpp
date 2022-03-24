@@ -29,10 +29,14 @@ int main(){
     int serv_fd = m_server.getListenfd();
     
     int cnt = 0;
+    int ret = 0;
     char buf[BUFFER_SIZE];
     while(true){
         for(int i = 0;i<USER_LIMIT;i++){
-            poll(fds,cnt+1,-1);
+            ret = poll(fds,cnt+1,-1);
+            if(ret < 0 ){
+                SU_LOG_ERROR(logger) <<"POLL ERROR";
+            }
             if(fds[i].fd == serv_fd && fds[i].revents &POLLIN){
                 User::ptr new_user(new User);
                 m_server.accept(new_user);
@@ -68,9 +72,14 @@ int main(){
                 int now_fd = user->getSockfd();
 
                 for(int j = 1;j<=cnt;j++){
-                    if(fds[i].fd == now_fd) continue;
-                    auto send_to = userMgr.findUser(fds[i].fd);
-                    send_to->send(buf,BUFFER_SIZE);
+                    std::cout << now_fd << fds[j].fd <<std::endl;
+                    if(fds[j].fd == now_fd) continue;
+                    auto send_to = userMgr.findUser(fds[j].fd);
+                    if(send_to->send(buf,BUFFER_SIZE)){
+                        SU_LOG_DEBUG(logger) <<"send to "<<send_to->getSockfd();
+                    }else{
+                        SU_LOG_ERROR(logger) <<"send error!";
+                    }
                 }
                 SU_LOG_DEBUG(logger) <<"POLLIN END";
 
