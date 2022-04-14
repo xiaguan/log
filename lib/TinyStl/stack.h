@@ -5,13 +5,6 @@
 #ifndef LOG_STACK_H
 #define LOG_STACK_H
 
-//
-// Created by 75108 on 2022/3/2.
-//
-
-#ifndef UNTITLED_STACK_H
-#define UNTITLED_STACK_H
-
 #include <memory>
 #include <iostream>
 #include <exception>
@@ -176,9 +169,5 @@ namespace su{
     };
 
 }
-
-
-#endif //UNTITLED_STACK_H
-
 
 #endif //LOG_STACK_H

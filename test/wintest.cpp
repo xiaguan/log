@@ -2,9 +2,9 @@
 #include <config.h>
 
 auto logger = SU_LOG_ROOT();
-
+su::Config::ConfigVarMap su::Config::s_dates;
 int main(){
-    su::ConfigVar<int>::ptr test = su::Config::Lookup("port",8080,"port");
-    SU_LOG_DEBUG(logger) << test->getValue();
+    su::ConfigVar<float>::ptr p_float_test = su::Config::Lookup("system",1.87f,"port");
+    cout << p_float_test->getValue()<<endl;
     SU_LOG_DEBUG(logger) <<"hello world";
 }

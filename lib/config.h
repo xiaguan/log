@@ -2,16 +2,15 @@
 // Created by 75108 on 2022/3/23.
 //
 
-#pragma once
+#ifndef Su_Lib_CONFIG
+#define Su_Lib_CONFIG
+
 
 #include <memory>
 #include <string>
 #include <map>
 #include <util/lexical_cast.h>
 #include <log.h>
-
-auto config_logger = SU_LOG_ROOT();
-
 
 namespace su{
     /*
@@ -22,10 +21,8 @@ namespace su{
 class ConfigVarBase{
 public:
     typedef std::shared_ptr<ConfigVarBase> ptr;
-    explicit ConfigVarBase(std::string name,std::string description = ""):
-    m_name(std::move(name)),m_description(std::move(description)){
-
-    }
+    ConfigVarBase(std::string name,std::string description = " "):
+    m_name(std::move(name)),m_description(std::move(description)){}
 
     virtual ~ConfigVarBase()= default;
 
@@ -58,7 +55,7 @@ public:
         try{
             return std::to_string(m_val);
         }catch(std::exception &e){
-            SU_LOG_ERROR(config_logger) << "ConfigVar::toString exception"<<e.what()<<" convert: "<<typeid(m_val).name()
+            SU_LOG_ERROR(SU_LOG_ROOT()) << "ConfigVar::toString exception"<<e.what()<<" convert: "<<typeid(m_val).name()
             <<" to string ";
         }
         return "";
@@ -69,7 +66,8 @@ public:
             m_val = lexical_cast<T>(val);
             return true;
         }catch(std::exception & e){
-            SU_LOG_ERROR(config_logger) <<"ConfigVar::fromString exception"<<e.what()<<" convert : "<<val<<" to "<< typeid(m_val).name();
+            SU_LOG_ERROR(SU_LOG_ROOT()) <<"ConfigVar::fromString exception"<<e.what()<<" convert : "<<val<<" to "<< typeid(m_val).name();
+            
         }
         return false;
     }
@@ -89,12 +87,12 @@ public:
             ,const std::string & description = " "){
               auto tmp = Lookup<T>(name);
               if(tmp){
-                  SU_LOG_INFO(config_logger) << "Lookup name = " << name
+                  SU_LOG_INFO(SU_LOG_ROOT()) << "Lookup name = " << name
                   << "exists";
                   return tmp;
               }
               if(name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._012345678") != std::string::npos){
-                  SU_LOG_ERROR(config_logger) <<"Lookup name invalid "<< name;
+                  SU_LOG_ERROR(SU_LOG_ROOT()) <<"Lookup name invalid "<< name;
                   /*
                    * invalid类的继承关系：exception->logic_error->invalid_argument
                    * 这里指无效参数，也就是name里不包含有效的字符
@@ -120,3 +118,5 @@ private:
     static ConfigVarMap s_dates;
 };
 }
+
+#endif

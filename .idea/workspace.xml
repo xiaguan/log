@@ -17,12 +17,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="fix server error">
-      <change afterPath="$PROJECT_DIR$/lib/config.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/su.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/TinyStl/stack.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/TinyStl/stack.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/config.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/log.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/log.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/log.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/log.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/lexical_cast.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/lexical_cast.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/singleton.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/singleton.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/wintest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/wintest.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,8 +99,13 @@
       <recent name="J:\log" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.logexample">
-    <configuration name="logexample" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="lib_test" RUN_TARGET_NAME="test" EXPLICIT_BUILD_TARGET_NAME="all">
+  <component name="RunManager" selected="CMake 应用程序.logexample">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="logexample" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lib_test" TARGET_NAME="test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="lib_test" RUN_TARGET_NAME="test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -118,9 +126,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.logexample" />
-      <item itemvalue="CMake Application.su" />
-      <item itemvalue="CMake Application.test" />
+      <item itemvalue="CMake 应用程序.logexample" />
+      <item itemvalue="CMake 应用程序.su" />
+      <item itemvalue="CMake 应用程序.test" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

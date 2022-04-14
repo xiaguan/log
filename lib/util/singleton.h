@@ -27,4 +27,4 @@ namespace su{
     };
 }
 
-#endif //LIB_TEST_SINGLETON_H
+#endif

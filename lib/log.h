@@ -48,7 +48,7 @@ SU_LOG_LEVEL(logger,su::log::Level::FATAL)
 #define SU_LOG_INFO(logger) \
 SU_LOG_LEVEL(logger,su::log::Level::INFO)
 
-#define SU_LOG_ROOT() su::log::LoggerMgr::GetInstance()->getLogger("root")
+#define SU_LOG_ROOT() su::log::LoggerMgr::GetInstance()->getRoot()
 
 
 namespace su{
@@ -265,6 +265,7 @@ namespace su{
             LoggerManager();
 
             std::shared_ptr<Logger> getLogger(const std::string & name);
+            std::shared_ptr<Logger> getRoot() {return m_root;}
 
             void init();
         private:
@@ -274,8 +275,7 @@ namespace su{
 
         typedef su::Singleton<LoggerManager> LoggerMgr;
 
-
     }
 }
 
-#endif //Su_Lib_Log
+#endif

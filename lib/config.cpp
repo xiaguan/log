@@ -5,5 +5,5 @@
 #include <config.h>
 
 namespace su{
-    Config::ConfigVarMap Config::s_dates;
+
 }
