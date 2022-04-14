@@ -15,12 +15,14 @@ void send_to_all(UserManager & manager,int fdGet,std::string msg){
         SU_LOG_ERROR(logger) << " send_to_all :msg over size";
         return ;
     }
+    SU_LOG_DEBUG(logger) <<"send_to_all start : "<<fdGet;
     msg.resize(BUFFER_SIZE);
     auto list = manager.getUserList();
     for(auto user_ptr : list){
         if(user_ptr->getSockfd() == fdGet) continue;
         user_ptr->send(msg.c_str(),BUFFER_SIZE);
     }
+    SU_LOG_DEBUG(logger) <<"send_to_all end ";
 }
 
 int main(){
