@@ -126,11 +126,10 @@ namespace su{
         return true;
     }
 
-    bool writen(int sockfd,void * buf,ssize_t writelen){
+    bool writen(int sockfd,const char * buf,ssize_t writelen){
         size_t nleft;
         ssize_t nwritten;
-        const char * ptr;
-        ptr = (char*)buf;
+        const char * ptr = buf;
         nleft = writelen;
         while(nleft > 0){
             if ((nwritten = write(sockfd,ptr,nleft)) <=0){

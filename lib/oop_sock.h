@@ -25,7 +25,7 @@ namespace su{
         ~User();
         protected:
         // 没有必要保存sockaddr_in，系统提供的api是很全的。
-        // struct sockaddr_in user_addr;
+        struct sockaddr_in user_addr;
         int m_sockfd;
     };
 

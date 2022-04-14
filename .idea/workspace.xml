@@ -16,13 +16,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="delete build">
+    <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="fix server error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/cha_server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/chat_server.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/oop_sock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/oop_sock.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mysock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mysock.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mysock.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mysock.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/oop_sock.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/oop_sock.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/server.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/wintest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/wintest.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +165,7 @@
       <workItem from="1647746768762" duration="1000" />
       <workItem from="1648041989746" duration="2402000" />
       <workItem from="1648103366180" duration="386000" />
-      <workItem from="1649917526862" duration="2093000" />
+      <workItem from="1649917526862" duration="3365000" />
     </task>
     <task id="LOCAL-00001" summary="repair log and add util folder">
       <created>1647084913047</created>
@@ -211,7 +209,21 @@
       <option name="project" value="LOCAL" />
       <updated>1648042952668</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix server error">
+      <created>1649919655471</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1649919655472</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix server error">
+      <created>1649919776227</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649919776227</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +256,7 @@
     <MESSAGE value="add lexical_cast.h" />
     <MESSAGE value="fix sock bug" />
     <MESSAGE value="delete build" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete build" />
+    <MESSAGE value="fix server error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix server error" />
   </component>
 </project>

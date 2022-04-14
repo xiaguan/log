@@ -40,7 +40,7 @@ namespace su{
 
     bool readn(int sockfd,void * buf,ssize_t readlen);
 
-    bool writen(int sockfd,void * buf,ssize_t writelen);
+    bool writen(int sockfd,const char * buf,ssize_t writelen);
 
     void init_logger(bool is_client);
     std::shared_ptr<log::Logger> new_logger(std::string loggername);
