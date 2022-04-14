@@ -7,7 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(lib_test)
 
-
 # 不同平台生成不同库
 if(UNIX)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib LIB_SRCS)
@@ -17,7 +16,9 @@ if(UNIX)
 elseif(WIN32)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib/TinyStl LIB_SRCS)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib/util LIB_SRCS)
-    add_library(su OBJECT ${PROJECT_SOURCE_DIR}/lib/log.cpp ${PROJECT_SOURCE_DIR}/lib/config.h ${LIB_SRCS})
+    add_library(su OBJECT ${PROJECT_SOURCE_DIR}/lib/log.cpp ${PROJECT_SOURCE_DIR}/lib/log.h
+            ${PROJECT_SOURCE_DIR}/lib/config.cpp ${PROJECT_SOURCE_DIR}/lib/config.h
+            ${LIB_SRCS})
 endif()
 
 include_directories(${PROJECT_SOURCE_DIR}/lib)
@@ -35,7 +36,7 @@ if(UNIX)
     target_link_libraries(test PUBLIC su)
 elseif(WIN32)
     add_executable(test ${PROJECT_SOURCE_DIR}/test/wintest.cpp)
-    target_link_libraries(test su Threads::Threads)
+    target_link_libraries(test PUBLIC su Threads::Threads)
 endif()
 
 

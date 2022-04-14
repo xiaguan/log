@@ -1,12 +1,10 @@
-﻿#include <iostream>
-#include <util/lexical_cast.h>
+﻿#include <log.h>
+#include <config.h>
 
-class A{
-
-};
+auto logger = SU_LOG_ROOT();
 
 int main(){
-    std::string a = "123";
-    a.resize(64);
-    cout << a.size() <<endl;
+    su::ConfigVar<int>::ptr test = su::Config::Lookup("port",8080,"port");
+    SU_LOG_DEBUG(logger) << test->getValue();
+    SU_LOG_DEBUG(logger) <<"hello world";
 }

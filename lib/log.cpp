@@ -371,11 +371,16 @@ namespace su{
             m_root->add_appender(file_appender);
 
             m_root->set_fmt(std::make_shared<Formatter>("d{%Y-%m-%d %H:%M:%S}%T%t%T%T%T[%p]%T[%c]%T%f:%l%T%m%n"));
+            m_loggers["root"] = m_root;
         }
 
         std::shared_ptr<Logger> LoggerManager::getLogger(const std::string &name) {
             auto it = m_loggers.find(name);
             return it == m_loggers.end()?m_root:it->second;
+        }
+
+        void LoggerManager::init() {
+
         }
     }
 }

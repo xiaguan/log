@@ -48,7 +48,7 @@ SU_LOG_LEVEL(logger,su::log::Level::FATAL)
 #define SU_LOG_INFO(logger) \
 SU_LOG_LEVEL(logger,su::log::Level::INFO)
 
-#define SU_LOG_ROOT su::log::LoggerMgr::GetInstance()->getLogger("root")
+#define SU_LOG_ROOT() su::log::LoggerMgr::GetInstance()->getLogger("root")
 
 
 namespace su{
@@ -246,7 +246,6 @@ namespace su{
             Formatter::ptr m_fmt;  //日志器统一的输出格式
             std::mutex m_mut;
         };
-
 
         // 我们需要一个RAII类来进行每一个event的生命周期管理
         class EventWrap {
