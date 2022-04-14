@@ -5,10 +5,23 @@
 
 using namespace su;
 
+auto logger = SU_LOG_ROOT;
+
 const int USER_LIMIT = 5;
 const int BUFFER_SIZE = 64;
 
-auto logger = SU_LOG_ROOT;
+void send_to_all(UserManager & manager,int fdGet,std::string msg){
+    if(msg.size() > BUFFER_SIZE){
+        SU_LOG_ERROR(logger) << " send_to_all :msg over size";
+        return ;
+    }
+    msg.resize(BUFFER_SIZE);
+    auto list = manager.getUserList();
+    for(auto user_ptr : list){
+        if(user_ptr->getSockfd() == fdGet) continue;
+        user_ptr->send(msg.c_str(),BUFFER_SIZE);
+    }
+}
 
 int main(){
     UserManager userMgr;
@@ -41,15 +54,17 @@ int main(){
                 User::ptr new_user(new User);
                 m_server.accept(new_user);
                 if(cnt == USER_LIMIT){
-                    char buf[10] ="full!";
-                    new_user->send(buf,10);
+                    char errorBuf[10] ="full!";
+                    new_user->send(errorBuf,10);
                     continue;
                 }
                 userMgr.addUser(new_user);
-
-                cnt++;
-                std::cout <<"debug";
                 setnonblocking(new_user->getSockfd());
+
+                /*
+                 * 每一个fds[cnt] 对应一个fd
+                 */
+                cnt++;
                 fds[cnt].fd = new_user->getSockfd();
                 fds[cnt].events = POLLIN | POLLRDHUP | POLLERR;
                 fds[cnt].revents = 0;
@@ -66,23 +81,14 @@ int main(){
                 fds[i] = fds[cnt];
                 cnt--;
             }else if(fds[i].revents & POLLIN){
-                SU_LOG_DEBUG(logger) <<"POLLIN ready" << fds[i].fd;
+                SU_LOG_DEBUG(logger) <<"POLLIN ready " << fds[i].fd;
                 auto user = userMgr.findUser(fds[i].fd);
                 user->recv(buf,BUFFER_SIZE);
                 int now_fd = user->getSockfd();
-
-                for(int j = 1;j<=cnt;j++){
-                    std::cout << now_fd << fds[j].fd <<std::endl;
-                    if(fds[j].fd == now_fd) continue;
-                    auto send_to = userMgr.findUser(fds[j].fd);
-                    if(send_to->send(buf,BUFFER_SIZE)){
-                        SU_LOG_DEBUG(logger) <<"send to "<<send_to->getSockfd();
-                    }else{
-                        SU_LOG_ERROR(logger) <<"send error!";
-                    }
-                }
+                std::string msg(buf);
+                std::thread t(send_to_all,std::ref(userMgr),now_fd,msg);
+                t.detach();
                 SU_LOG_DEBUG(logger) <<"POLLIN END";
-
             }
         }   
     }

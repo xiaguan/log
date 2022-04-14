@@ -6,7 +6,7 @@
 
 namespace su{
     //USER
-    bool User::send(char * buf,size_t len){
+    bool User::send(const char * buf,size_t len){
         return writen(m_sockfd,buf,len);
     }
 

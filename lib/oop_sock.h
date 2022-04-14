@@ -12,26 +12,23 @@
 
 namespace su{
 
-    //TCPserver的封装
+    //TCP_server的封装
     class TCPserver;
     class User{
         public:
         friend TCPserver;
         typedef std::shared_ptr<User> ptr;
-        bool send(char * buf,size_t len);
+        bool send(const char * buf,size_t len);
         bool recv(char * buf,size_t len);
 
         int getSockfd() const {return m_sockfd;}
         ~User();
         protected:
-        struct sockaddr_in user_addr;
+        // 没有必要保存sockaddr_in，系统提供的api是很全的。
+        // struct sockaddr_in user_addr;
         int m_sockfd;
     };
 
-    /*
-     * 设计思路：睡觉的时候突然想到怎么定位一个客户的fd
-     * fd 具有唯一性，可以通过map查找
-     */
     class UserManager{
     public:
         typedef std::shared_ptr<UserManager> ptr;
@@ -52,7 +49,7 @@ namespace su{
         void delUser(int socfd);
         void delUser(User::ptr user);
 
-
+        std::list<User::ptr>& getUserList() {return users;}
     private:
         std::list<User::ptr> users;
     };

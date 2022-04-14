@@ -7,5 +7,6 @@ class A{
 
 int main(){
     std::string a = "123";
-    A r = lexical_cast<A,std::string>(a);
+    a.resize(64);
+    cout << a.size() <<endl;
 }
