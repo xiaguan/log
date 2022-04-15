@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 3.15)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#set(CMAKE_BUILD_TYPE Release)
+# set(CMAKE_CXX_FLAGS -v)
+
+set(CMAKE_BUILD_TYPE Release)
 
 project(lib_test)
 
@@ -17,7 +19,7 @@ elseif(WIN32)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib/TinyStl LIB_SRCS)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib/util LIB_SRCS)
     add_library(su OBJECT ${PROJECT_SOURCE_DIR}/lib/log.cpp ${PROJECT_SOURCE_DIR}/lib/log.h
-             ${PROJECT_SOURCE_DIR}/lib/config.h ${PROJECT_SOURCE_DIR}/lib/config.cpp
+              ${PROJECT_SOURCE_DIR}/lib/config.cpp ${PROJECT_SOURCE_DIR}/lib/config.h
             ${LIB_SRCS})
 endif()
 

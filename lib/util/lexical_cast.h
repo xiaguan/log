@@ -16,6 +16,10 @@
 using namespace std;
 
 namespace detail{
+
+     const char * s_true = "true";
+     const char* s_false = "false";
+
     template <typename To, typename From>
     class Converter{
 
