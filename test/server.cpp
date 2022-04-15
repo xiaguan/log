@@ -5,7 +5,7 @@
 
 using namespace su;
 
-auto logger = SU_LOG_ROOT;
+auto logger = SU_LOG_ROOT();
 
 const int USER_LIMIT = 5;
 const int BUFFER_SIZE = 64;
