@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # set(CMAKE_CXX_FLAGS -v)
 
-set(CMAKE_BUILD_TYPE Release)
+# set(CMAKE_BUILD_TYPE Release)
 
 project(lib_test)
 
@@ -24,6 +24,10 @@ elseif(WIN32)
 endif()
 
 include_directories(${PROJECT_SOURCE_DIR}/lib)
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
+
+
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
@@ -38,7 +42,8 @@ if(UNIX)
     target_link_libraries(test PUBLIC su)
 elseif(WIN32)
     add_executable(test ${PROJECT_SOURCE_DIR}/test/wintest.cpp)
-    target_link_libraries(test PUBLIC su Threads::Threads)
+    target_link_libraries(test PUBLIC su
+            ${PROJECT_SOURCE_DIR}/lib/yaml-cpp.lib)
 endif()
 
 

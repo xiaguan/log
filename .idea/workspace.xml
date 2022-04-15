@@ -3,7 +3,7 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+  <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="lib_test" targetName="test" />
       <config projectName="lib_test" targetName="logexample" />
@@ -17,9 +17,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="fix lexi bug,strange bug">
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/anchor.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/binary.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/contrib/anchordict.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/contrib/graphbuilder.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/depthguard.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/dll.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/emitfromevents.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/emitter.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/emitterdef.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/emittermanip.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/emitterstyle.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/eventhandler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/exceptions.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/mark.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/convert.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/detail/impl.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/detail/iterator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/detail/iterator_fwd.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/detail/memory.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/detail/node.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/detail/node_data.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/detail/node_iterator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/detail/node_ref.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/emit.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/impl.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/iterator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/node.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/parse.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/ptr.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/node/type.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/noexcept.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/null.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/ostream_wrapper.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/parser.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/stlemitter.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/traits.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/yaml-cpp/yaml.h" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/libsu.a" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/libsu.dll" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/libsu.dll.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/yaml-cpp.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/yaml-cpp.lib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/util/lexical_cast.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/lexical_cast.h" afterDir="false" />
@@ -33,6 +72,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -73,11 +113,18 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "cmake.loaded.for.project": "true"
+    "cmake.loaded.for.project": "true",
+    "last_opened_file_path": "J:/log/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="J:\log\lib" />
+      <recent name="J:\log" />
       <recent name="J:\log\Examples" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -87,12 +134,12 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.logexample">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="logexample" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lib_test" TARGET_NAME="test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="lib_test" RUN_TARGET_NAME="test">
+    <configuration name="logexample" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lib_test" TARGET_NAME="test" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="lib_test" RUN_TARGET_NAME="test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -102,12 +149,12 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="su" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lib_test" TARGET_NAME="su" CONFIG_NAME="Debug">
+    <configuration name="su" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lib_test" TARGET_NAME="su" CONFIG_NAME="Release">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lib_test" TARGET_NAME="test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="lib_test" RUN_TARGET_NAME="test">
+    <configuration name="test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lib_test" TARGET_NAME="test" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="lib_test" RUN_TARGET_NAME="test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -161,7 +208,9 @@
       <workItem from="1649917526862" duration="3966000" />
       <workItem from="1649927351987" duration="7325000" />
       <workItem from="1649937648899" duration="3000" />
-      <workItem from="1650004042306" duration="80000" />
+      <workItem from="1650004042306" duration="798000" />
+      <workItem from="1650008028163" duration="40000" />
+      <workItem from="1650021749087" duration="2756000" />
     </task>
     <task id="LOCAL-00001" summary="repair log and add util folder">
       <created>1647084913047</created>
@@ -233,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649940032289</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fix lexi bug,strange bug">
+      <created>1650004148492</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1650004148492</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
