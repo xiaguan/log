@@ -11,6 +11,9 @@
 #include <map>
 #include <util/lexical_cast.h>
 #include <log.h>
+#include <yaml-cpp/yaml.h>
+
+
 
 namespace su{
     /*
@@ -22,14 +25,16 @@ class ConfigVarBase{
 public:
     typedef std::shared_ptr<ConfigVarBase> ptr;
     ConfigVarBase(std::string name,std::string description = " "):
-    m_name(std::move(name)),m_description(std::move(description)){}
+    m_name(std::move(name)),m_description(std::move(description)){
+        
+    }
 
     virtual ~ConfigVarBase()= default;
 
     /*
      * 基类提供的方法：
      * get获取字段，描述
-     * 和string的交互
+     * toString and fromString both use the lexical_cast
      */
 
     const std::string & getName() const { return m_name;}
@@ -37,12 +42,14 @@ public:
 
     virtual std::string toString() = 0;
     virtual bool fromString(const std::string& val) = 0;
+
+    virtual std::string getTypeNmae() const = 0;
 protected:
     std::string m_name;
     std::string m_description;
 };
 
-template <class T>
+template <class T ,class FromStr = lexical_cast<std::string,T>,class ToStr = lexical_cast<T,std::string>>
 class ConfigVar: public ConfigVarBase{
 public:
     typedef std::shared_ptr<ConfigVar> ptr;
@@ -91,7 +98,7 @@ public:
                   << "exists";
                   return tmp;
               }
-              if(name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._012345678") != std::string::npos){
+              if(name.find_first_not_of("abcdefghijklmnopqrstuvwxyz._012345678") != std::string::npos){
                   SU_LOG_ERROR(SU_LOG_ROOT()) <<"Lookup name invalid "<< name;
                   /*
                    * invalid类的继承关系：exception->logic_error->invalid_argument
@@ -101,21 +108,27 @@ public:
                   throw std::invalid_argument(name);
               }
               typename ConfigVar<T>::ptr v(new ConfigVar<T>(name,default_value,description));
-              s_dates[name] = v;
+              GetDates()[name] = v;
               return v;
     }
 
     template <class T>
     static typename ConfigVar<T>::ptr Lookup(const std::string& name){
-        auto it = s_dates.find(name);
-        if(it == s_dates.end()){
+        auto it = GetDates().find(name);
+        if(it == GetDates().end()){
             return nullptr;
         }
         return std::dynamic_pointer_cast<ConfigVar<T> >(it->second);
     }
 
+    static void LoadFromFile(const YAML::Node & root);
+
+    static ConfigVarBase::ptr LookupBase(const std::string & name);
 private:
-    static ConfigVarMap s_dates;
+    static ConfigVarMap& GetDates() {
+        static ConfigVarMap s_date;
+        return s_date;
+        }
 };
 }
 
