@@ -26,7 +26,7 @@ endif()
 include_directories(${PROJECT_SOURCE_DIR}/lib)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-
+link_directories(${PROJECT_SOURCE_DIR}/lib)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
@@ -42,8 +42,8 @@ if(UNIX)
     target_link_libraries(test PUBLIC yaml-cpp)
 elseif(WIN32)
     add_executable(test ${PROJECT_SOURCE_DIR}/test/wintest.cpp)
-    target_link_libraries(test PUBLIC su
-            ${PROJECT_SOURCE_DIR}/lib/yaml-cpp.lib)
+    target_link_libraries(test PUBLIC su)
+   target_link_libraries(test PUBLIC yaml-cpp)
 endif()
 
 
