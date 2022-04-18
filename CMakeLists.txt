@@ -28,18 +28,18 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 
 
-
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
 # 生成可执行文件，不同系统，不同的测试
 if(UNIX)
-    add_executable(client ${PROJECT_SOURCE_DIR}/test/chat_client.cpp)
+    add_executable(client ${PROJECT_SOURCE_DIR}/test/client.cpp)
     add_executable(serv ${PROJECT_SOURCE_DIR}/test/server.cpp)
     add_executable(test ${PROJECT_SOURCE_DIR}/test/test.cpp)
     target_link_libraries(client PUBLIC su Threads::Threads)
     target_link_libraries(serv PUBLIC su Threads::Threads)
     target_link_libraries(test PUBLIC su)
+    target_link_libraries(test PUBLIC yaml-cpp)
 elseif(WIN32)
     add_executable(test ${PROJECT_SOURCE_DIR}/test/wintest.cpp)
     target_link_libraries(test PUBLIC su
