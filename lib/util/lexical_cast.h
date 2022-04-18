@@ -12,84 +12,104 @@
 #include <stdexcept>
 #include <cctype>
 #include <cstring>
-
-using namespace std;
+#include <sstream>
 
 namespace detail{
-
-     inline const char * s_true = "true";
-     inline const char* s_false = "false";
-
-    template <typename To, typename From>
+    template <typename From,typename To>
     class Converter{
 
     };
 
+    // 把类型T转换为string,就调用标准库的就好了，没什么特别的
     template <typename From>
-    class Converter<long,From>{
+    class Converter<From,std::string>{
     public:
-        static long convert(const From & from){
-            return std::stol(from);
-        }
-    };
-
-    template <typename From>
-    class Converter<int,From>{
-    public:
-        static long convert(const From & from){
-            return std::stoi(from);
-        }
-    };
-
-    template <typename From>
-    struct Converter<long long ,From>{
-        static long long convert(const From & from){
-            return std::stoll(from);
-        }
-    };
-
-    template <typename From>
-    class Converter<unsigned long long,From>{
-    public:
-        static long convert(const From & from){
-            return std::stoull(from);
-        }
-    };
-
-    template <typename From>
-    struct Converter<float,From>{
-    public:
-        static float convert(const From & from){
-            return std::stof(from);
-        }
-    };
-
-    template <typename From>
-    struct Converter<double,From>{
-    public:
-        static float convert(const From & from){
-            return std::stod(from);
-        }
-    };
-
-    template <typename From>
-    struct Converter<string,From>{
-    public:
-        static std::string convert(const From & from){
+         std::string convert(const From & from){
             return std::to_string(from);
         }
     };
 
-    
+    // 这边就要手打了，就是从string到各种东西，我们也选择使用标准库的std::stoxxxx
+    // 有个问题待解决就是没有unsigned int
+    template<> class Converter<std::string,int>{
+    public:
+        static int convert(const std::string & from){
+            return stoi(from);
+        }
+    };
+
+    template<> class Converter<std::string,unsigned int>{
+    public:
+        static unsigned int convert(const std::string & from){
+            std::stringstream ss(from);
+            unsigned int result;
+            ss >> result;
+            return result;
+        }
+    };
+
+    template<> class Converter<std::string,long>{
+    public:
+        static long convert(const std::string & from){
+            return std::stol(from);
+        }
+    };
+
+    template<> class Converter<std::string,long long >{
+    public:
+        static long long convert(const std::string & from){
+            return std::stoll(from);
+        }
+    };
+
+    template<> class Converter<std::string,unsigned long>{
+    public:
+        static unsigned long convert(const std::string & from){
+            return std::stoul(from);
+        }
+    };
+
+    template<> class Converter<std::string,unsigned long long>{
+    public:
+        static unsigned long long convert(const std::string & from){
+            return std::stoull(from);
+        }
+    };
+
+    template<> class Converter<std::string,double>{
+    public:
+        static double convert(const std::string & from){
+            return std::stod(from);
+        }
+    };
+
+    template<> class Converter<std::string,long double>{
+    public:
+        static long double convert(const std::string & from){
+            return std::stold(from);
+        }
+    };
+
+    template<> class Converter<std::string,float>{
+    public:
+        static float convert(const std::string & from){
+            return std::stof(from);
+        }
+    };
 
 }
 
-template <typename To, typename From>
+/*
+ * 这里是我们的lexical_cast的最基本形式，就是
+ */
+// 这里的意思是from和to类型不同，需要转换
+template <typename From, typename To>
     typename std::enable_if<!std::is_same<To, From>::value, To>::type lexical_cast(const From& from)
     {
-        return detail::Converter<To, From>::convert(from);
+        return detail::Converter<From,To>::convert(from);
     }
 
+    // from和to 类型相同，不需要转换
     template <typename To, typename From>
     typename std::enable_if<std::is_same<To, From>::value, To>::type lexical_cast(const From& from)
     {
