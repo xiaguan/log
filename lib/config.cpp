@@ -11,7 +11,7 @@ namespace su{
     }
 
     static void ListAllMember(const std::string & prefix,
-    const YAML::Node& node,std::list<pair<std::string,const YAML::Node> > & output){
+    const YAML::Node& node,std::list<std::pair<std::string,const YAML::Node> > & output){
         if(prefix.find_first_not_of("abcdefghijklmnopqrstuvwxyz._012345678")
         != std::string::npos){
             SU_LOG_ERROR(SU_LOG_ROOT()) <<"LoadAllNodes(): invalid error "<<prefix<<" node : "<<node;
@@ -28,7 +28,7 @@ namespace su{
     }
 
     void Config::LoadFromFile(const YAML::Node & root){
-        std::list<pair<std::string,const YAML::Node> > all_nodes;
+        std::list<std::pair<std::string,const YAML::Node> > all_nodes;
         ListAllMember("",root,all_nodes);
 
         for(auto i : all_nodes){

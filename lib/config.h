@@ -12,6 +12,8 @@
 #include <util/lexical_cast.h>
 #include <log.h>
 #include <yaml-cpp/yaml.h>
+#include <sstream>
+#include <vector>
 
 
 
@@ -21,6 +23,7 @@ namespace su{
      *  std::string m_description 字段描述
      *  设置为基类的原因是，字段里所存放的值的类型是多样化的，交给子类处理
      */
+
 class ConfigVarBase{
 public:
     typedef std::shared_ptr<ConfigVarBase> ptr;
@@ -31,7 +34,18 @@ public:
 
     virtual ~ConfigVarBase()= default;
 
-    /*
+    /*template <typename From, typename To>
+    typename std::enable_if<!std::is_same<To, From>::value, To>::type lexical_cast(const From& from)
+    {
+        return detail::Converter<From,To>::convert(from);
+    }
+
+    // from和to 类型相同，不需要转换
+    template <typename To, typename From>
+    typename std::enable_if<std::is_same<To, From>::value, To>::type lexical_cast(const From& from)
+    {
+        return from;
+    }
      * 基类提供的方法：
      * get获取字段，描述
      * toString and fromString both use the lexical_cast
@@ -43,13 +57,55 @@ public:
     virtual std::string toString() = 0;
     virtual bool fromString(const std::string& val) = 0;
 
-    virtual std::string getTypeNmae() const = 0;
+    //virtual std::string getTypeNmae() const = 0;
 protected:
     std::string m_name;
     std::string m_description;
 };
 
-template <class T ,class FromStr = lexical_cast<std::string,T>,class ToStr = lexical_cast<T,std::string>>
+template <typename From,typename To>
+class LexicalCast{
+    public:
+    To operator()(const From & from) {
+        return lexical_cast<From,To>()(from);
+    }
+};
+
+
+
+// string -----> vector<T>
+template<class T>
+class LexicalCast<std::string,std::vector<T> > {
+public:
+    std::vector<T> operator()(const std::string & s){
+    YAML::Node node = YAML::Load(s);
+    typename std::vector<T> vec;
+    std::stringstream ss;
+    for(size_t i = 0;i<node.size();i++){
+        ss.str("");
+        ss << node[i];
+        vec.push_back(lexical_cast<std::string,T>()(ss.str()));
+    }
+    return vec;
+    }
+};
+
+// vector<T> ----> std::string
+template <typename T>
+class LexicalCast<std::vector<T>,std::string>{
+public:
+    std::string operator()(const std::vector<T> & vec){ 
+        YAML::Node node(YAML::NodeType::Sequence);
+        for(auto & i : vec) {
+            node.push_back(YAML::Load(lexical_cast<T,std::string>()(i)));
+        }
+        std::stringstream ss;
+        ss << node;
+        return ss.str();
+    }
+};
+
+template <class T ,class FromStr = LexicalCast<std::string,T>,class ToStr = LexicalCast<T,std::string>>
 class ConfigVar: public ConfigVarBase{
 public:
     typedef std::shared_ptr<ConfigVar> ptr;
@@ -60,7 +116,7 @@ public:
 
     std::string toString() override{
         try{
-            return std::to_string(m_val);
+            return ToStr()(m_val);
         }catch(std::exception &e){
             SU_LOG_ERROR(SU_LOG_ROOT()) << "ConfigVar::toString exception"<<e.what()<<" convert: "<<typeid(m_val).name()
             <<" to string ";
@@ -70,10 +126,10 @@ public:
 
     bool fromString(const std::string & val) override{
         try{
-            m_val = lexical_cast<T>(val);
+            m_val = FromStr()(val);
             return true;
         }catch(std::exception & e){
-            SU_LOG_ERROR(SU_LOG_ROOT()) <<"ConfigVar::fromString exception"<<e.what()<<" convert : "<<val<<" to "<< typeid(m_val).name();
+            SU_LOG_ERROR(SU_LOG_ROOT()) <<"ConfigVar::fromString exception "<<e.what()<<" convert : "<<val<<" to "<< typeid(m_val).name();
             
         }
         return false;

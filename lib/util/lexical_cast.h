@@ -24,7 +24,7 @@ namespace detail{
     template <typename From>
     class Converter<From,std::string>{
     public:
-         std::string convert(const From & from){
+         static std::string convert(const From & from){
             return std::to_string(from);
         }
     };
@@ -103,17 +103,13 @@ namespace detail{
  * 这里是我们的lexical_cast的最基本形式，就是
  */
 // 这里的意思是from和to类型不同，需要转换
+
 template <typename From, typename To>
-    typename std::enable_if<!std::is_same<To, From>::value, To>::type lexical_cast(const From& from)
-    {
+class lexical_cast{
+    public:
+     To operator()(const From & from){
         return detail::Converter<From,To>::convert(from);
     }
-
-    // from和to 类型相同，不需要转换
-    template <typename To, typename From>
-    typename std::enable_if<std::is_same<To, From>::value, To>::type lexical_cast(const From& from)
-    {
-        return from;
-    }
+};
 
 #endif //LIB_TEST_LEXICAL_CAST_H
