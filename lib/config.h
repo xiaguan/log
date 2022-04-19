@@ -328,8 +328,11 @@ namespace su {
             auto tmp = Lookup<T>(name);
             if (tmp) {
                 SU_LOG_INFO(SU_LOG_ROOT()) << "Lookup name = " << name
-                                           << "exists";
+                                           << " exists";
                 return tmp;
+            }else{
+                SU_LOG_INFO(SU_LOG_ROOT()) <<"Lookup name = " << name
+                                            << " doesn't exist";
             }
             if (name.find_first_not_of("abcdefghijklmnopqrstuvwxyz._012345678") != std::string::npos) {
                 SU_LOG_ERROR(SU_LOG_ROOT()) << "Lookup name invalid " << name;

@@ -20,6 +20,14 @@ namespace detail{
 
     };
 
+    template<>
+    class Converter<std::string,std::string>{
+    public:
+        static std::string convert(const std::string & s){
+            return s;
+        }
+    };
+
     // 把类型T转换为string,就调用标准库的就好了，没什么特别的
     template <typename From>
     class Converter<From,std::string>{

@@ -27,15 +27,13 @@ namespace su{
         }
     }
 
-    void Config::LoadFromFile(const YAML::Node & root){
+     void Config::LoadFromFile(const YAML::Node & root){
         std::list<std::pair<std::string,const YAML::Node> > all_nodes;
         ListAllMember("",root,all_nodes);
-
         for(auto i : all_nodes){
             std::string key = i.first;
             if(key.empty()) continue;
             ConfigVarBase::ptr var = LookupBase(key);
-
             if(var){
                 if(i.second.IsScalar()){
                     var->fromString(i.second.Scalar());
