@@ -27,7 +27,7 @@ namespace su{
         }
     }
 
-     void Config::LoadFromFile(const YAML::Node & root){
+     void Config::LoadFromYAMLNode(const YAML::Node & root){
         std::list<std::pair<std::string,const YAML::Node> > all_nodes;
         ListAllMember("",root,all_nodes);
         for(auto i : all_nodes){

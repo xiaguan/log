@@ -357,7 +357,7 @@ namespace su {
             return std::dynamic_pointer_cast<ConfigVar<T> >(it->second);
         }
 
-        static void LoadFromFile(const YAML::Node &root);
+        static void LoadFromYAMLNode(const YAML::Node &root);
 
         static ConfigVarBase::ptr LookupBase(const std::string &name);
 
