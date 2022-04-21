@@ -9,13 +9,15 @@
 #include <memory>
 #include <string>
 #include <map>
-#include <util/lexical_cast.h>
-#include <log.h>
 #include <yaml-cpp/yaml.h>
 #include <sstream>
 #include <vector>
 #include <unordered_set>
+#include <functional>
 
+#include "log.h"
+#include "util/lexical_cast.h"
+#include "util/util.h"
 
 namespace su {
     /*
@@ -28,25 +30,14 @@ namespace su {
     public:
         typedef std::shared_ptr<ConfigVarBase> ptr;
 
-        ConfigVarBase(std::string name, std::string description = " ") :
+        explicit ConfigVarBase(std::string name, std::string description = " ") :
                 m_name(std::move(name)), m_description(std::move(description)) {
 
         }
 
         virtual ~ConfigVarBase() = default;
 
-        /*template <typename From, typename To>
-        typename std::enable_if<!std::is_same<To, From>::value, To>::type lexical_cast(const From& from)
-        {
-            return detail::Converter<From,To>::convert(from);
-        }
-
-        // from和to 类型相同，不需要转换
-        template <typename To, typename From>
-        typename std::enable_if<std::is_same<To, From>::value, To>::type lexical_cast(const From& from)
-        {
-            return from;
-        }
+        /*
          * 基类提供的方法：
          * get获取字段，描述
          * toString and fromString both use the lexical_cast
@@ -60,7 +51,7 @@ namespace su {
 
         virtual bool fromString(const std::string &val) = 0;
 
-        //virtual std::string getTypeNmae() const = 0;
+        virtual std::string getTypeName() const = 0;
     protected:
         std::string m_name;
         std::string m_description;
@@ -194,7 +185,7 @@ namespace su {
         }
     };
 
-// unordered_set<T>  ----> string
+    // unordered_set<T>  ----> string
     template<typename T>
     class LexicalCast<std::unordered_set<T>, std::string> {
     public:
@@ -211,7 +202,7 @@ namespace su {
     };
 
 
-// std::string ----->std::map<std::string,T>
+    // std::string ----->std::map<std::string,T>
     template<typename T>
     class LexicalCast<std::string, std::map<std::string, T> > {
     public:
@@ -229,7 +220,7 @@ namespace su {
         }
     };
 
-// std::map<std::string,T>  ----> std::string
+    // std::map<std::string,T>  ----> std::string
     template<typename T>
     class LexicalCast<std::map<std::string, T>, std::string> {
     public:
@@ -244,7 +235,7 @@ namespace su {
         }
     };
 
-// std::string ----->std::unordered_map<std::string,T>
+    // std::string ----->std::unordered_map<std::string,T>
     template<typename T>
     class LexicalCast<std::string, std::unordered_map<std::string, T> > {
     public:
@@ -262,7 +253,7 @@ namespace su {
         }
     };
 
-// std::unordered_map<std::string,T>  ----> std::string
+    // std::unordered_map<std::string,T>  ----> std::string
     template<typename T>
     class LexicalCast<std::unordered_map<std::string, T>, std::string> {
     public:
@@ -282,8 +273,10 @@ namespace su {
     class ConfigVar : public ConfigVarBase {
     public:
         typedef std::shared_ptr<ConfigVar> ptr;
+        typedef std::function<void (const T& old_value, const T& new_vluae)> on_change_cb;
 
-        ConfigVar(const std::string &name, const T &val, const std::string &description = "") :
+        ConfigVar(const std::string &name, const T &val,
+                  const std::string &description = "") :
                 ConfigVarBase(name, description), m_val(val) {
         }
 
@@ -291,9 +284,9 @@ namespace su {
             try {
                 return ToStr()(m_val);
             } catch (std::exception &e) {
-                SU_LOG_ERROR(SU_LOG_ROOT()) << "ConfigVar::toString exception" << e.what() << " convert: "
-                                            << typeid(m_val).name()
-                                            << " to string ";
+                SU_LOG_ERROR(SU_LOG_ROOT()) << "ConfigVar::toString exception"
+                << e.what() << " convert: "
+                << TypeToName<T>()<< " to string ";
             }
             return "";
         }
@@ -303,8 +296,8 @@ namespace su {
                 m_val = FromStr()(val);
                 return true;
             } catch (std::exception &e) {
-                SU_LOG_ERROR(SU_LOG_ROOT()) << "ConfigVar::fromString exception " << e.what() << " convert : " << val
-                                            << " to " << typeid(m_val).name();
+                SU_LOG_ERROR(SU_LOG_ROOT()) << "ConfigVar::fromString exception " << e.what() <<
+                " convert : " << val<< " to " << TypeToName<T>();
 
             }
             return false;
@@ -312,10 +305,41 @@ namespace su {
 
         T getValue() const { return m_val; }
 
-        void setValue(const T &val) { m_val = val; }
+        void setValue(const T &val) {
+            if(val == m_val){
+                return ;
+            }
+            for(auto& cb : m_cbs){
+                cb->second(m_val,val);
+            }
+            m_val = val;
+        }
+
+        uint64_t addListener(on_change_cb cb){
+            static uint64_t s_fun_id = 0;
+            ++s_fun_id;
+            m_cbs[s_fun_id] = cb;
+            return s_fun_id;
+        }
+
+        void delListener(uint64_t key){
+            m_cbs.erase(key);
+        }
+
+        on_change_cb getListener(uint64_t key){
+            auto it = m_cbs.find(key);
+            return it == m_cbs.end() ? nullptr : it->second;
+        }
+
+        void clearListener() {
+            m_cbs.clear();
+        }
+
+        std::string getTypeName() const override{ return TypeToName<T>();}
 
     private:
         T m_val;
+        std::map<uint64_t, on_change_cb> m_cbs;
     };
 
     class Config {
@@ -325,16 +349,19 @@ namespace su {
         template<class T>
         static typename ConfigVar<T>::ptr
         Lookup(const std::string &name, const T &default_value, const std::string &description = " ") {
-            auto tmp = Lookup<T>(name);
-            if (tmp) {
-                SU_LOG_INFO(SU_LOG_ROOT()) << "Lookup name = " << name
-                                           << " exists";
-                return tmp;
-            }else{
-                SU_LOG_INFO(SU_LOG_ROOT()) <<"Lookup name = " << name
-                                            << " doesn't exist";
+            auto it = GetDates().find(name);
+            if( it != GetDates().end()){
+                auto tmp = std::dynamic_pointer_cast<ConfigVar<T> >(it->second);
+                if(tmp){
+                    SU_LOG_INFO(SU_LOG_ROOT()) <<"Look up name = "<<name<<" exists";
+                    return tmp;
+                }else{
+                    SU_LOG_DEBUG(SU_LOG_ROOT()) <<"Look up name = "<<name <<" exists ,find type =  "
+                    << TypeToName<T>() <<" ,real_type = "<<it->second->getTypeName();
+                    return nullptr;
+                }
             }
-            if (name.find_first_not_of("abcdefghijklmnopqrstuvwxyz._012345678") != std::string::npos) {
+            if (name.find_first_not_of("abcdefghijklmnopqrstuvwxyz._0123456789") != std::string::npos) {
                 SU_LOG_ERROR(SU_LOG_ROOT()) << "Lookup name invalid " << name;
                 /*
                  * invalid类的继承关系：exception->logic_error->invalid_argument

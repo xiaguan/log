@@ -181,7 +181,7 @@ namespace su{
             virtual ~Appender() = default;
 
         protected:
-            Level m_level;  //达到级别才进行输出
+            Level m_level = Level::INFO;  //达到级别才进行输出
             Formatter::ptr m_fmt{nullptr};
         };
 

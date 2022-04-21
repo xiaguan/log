@@ -351,7 +351,6 @@ namespace su{
         EventWrap::EventWrap(Event::ptr event):m_event(std::move(event)){}
 
         EventWrap::~EventWrap() {
-            m_event->getSS()<<std::flush;
             m_event->get_logger()->log(m_event);
         }
 
@@ -366,7 +365,7 @@ namespace su{
             m_root->add_appender(Appender::ptr(new StdOutputAppender));
 
             Appender::ptr file_appender(new FileOutputAppender("root.txt"));
-            file_appender->set_level(Level::DEBUG);
+            file_appender->set_level(Level::INFO);
 
             m_root->add_appender(file_appender);
 

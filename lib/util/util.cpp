@@ -2,6 +2,7 @@
 // Created by 75108 on 2022/1/23.
 //
 
+
 #include "util/util.h"
 
 namespace su{
@@ -12,4 +13,6 @@ namespace su{
         result = std::stoull(osr.str());
         return result;
     }
+
+
 }
