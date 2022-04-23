@@ -1,13 +1,48 @@
-#include <config.h>
-#include "yaml-cpp/yaml.h"
+#include <log.h>
+#include <TinyStl/list.h>
+#include <list>
+
+using namespace std;
+
+slist_head * head;
+
+struct B{
+    int val;
+};
+
+struct A{
+    int val;
+    B b;
+};
 
 int main(){
-    using namespace std;
-    YAML::Node root = YAML::LoadFile("log.yml");
-    su::ConfigVar<int>::ptr pre_port = su::Config::Lookup("system.port",0,"system port ");
-    su::ConfigVar<float>::ptr next_port = su::Config::Lookup("system.port",(float)0,"system port");
-    su::Config::LoadFromYAMLNode(root);
-    su::ConfigVar<int>::ptr pre_port1 = su::Config::Lookup("system.port",0,"system port ");
-    std::cout << pre_port->toString() << std::endl;
-    return 0;   
+    /*
+    su::__node<int>* n = new su::__node<int>;
+    n->node = new slist_node;
+    n->m_val = 100;
+
+    cout << &(n->node) <<endl;
+    cout << &(n) << endl;
+    cout << (unsigned long long )(&((su::__node<int>*)nullptr)->m_val) <<endl;
+    cout << sizeof (unsigned long long) << " "<<sizeof(&((su::__node<int>*)nullptr)->m_val) << endl;
+    cout << ((su::__node<int>*)((char *)(su::__node<int>*)(&n->node) - (unsigned long long)(&((su::__node<int>*)nullptr)->node))) << endl;
+    */
+    su::Timer timer;
+    std::list<int> list;
+    timer.start();
+    for(int j = 0;j<10;j++)
+        for(int i = 0;i<1e6;i++) list.push_back(i);
+    timer.end();
+
+    su::slist<int> m_list;
+    timer.start();
+    for(int j = 0;j<10;j++)
+        for(int i = 0;i<1e6;i++) m_list.add_after_head(i);
+    timer.end();
+
+    su::normal_list<int> n_list;
+    timer.start();
+    for(int j = 0;j<10;j++)
+        for(int i = 0;i<1e6;i++) n_list.push_back(i);
+    timer.end();
 }

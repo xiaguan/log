@@ -5,10 +5,8 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="lib_test" targetName="client" />
       <config projectName="lib_test" targetName="test" />
       <config projectName="lib_test" targetName="logexample" />
-      <config projectName="lib_test" targetName="serv" />
       <config projectName="lib_test" targetName="su" />
     </generated>
   </component>
@@ -18,11 +16,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="add docs">
+    <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="ssh error">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/config.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/wintest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/wintest.cpp" afterDir="false" />
     </list>
     <list id="cd1d6dd6-5317-46ff-9351-cea1412d1dab" name="Changes by 75108" comment="add docs" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +72,13 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;cmake.loaded.for.project&quot;: &quot;true&quot;,
@@ -81,6 +87,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;CPPToolchains&quot;,
     &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
   }
@@ -98,7 +105,7 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.logexample">
-    <configuration name="client" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lib_test" TARGET_NAME="client" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="lib_test" RUN_TARGET_NAME="client">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -109,11 +116,6 @@
       </method>
     </configuration>
     <configuration name="logexample" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="logexample" TARGET_NAME="logexample" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="logexample" RUN_TARGET_NAME="logexample">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="serv" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lib_test" TARGET_NAME="serv" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="lib_test" RUN_TARGET_NAME="serv">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -130,8 +132,6 @@
     </configuration>
     <list>
       <item itemvalue="CMake Application.logexample" />
-      <item itemvalue="CMake Application.client" />
-      <item itemvalue="CMake Application.serv" />
       <item itemvalue="CMake Application.su" />
       <item itemvalue="CMake Application.test" />
     </list>
@@ -184,6 +184,11 @@
       <workItem from="1650021749087" duration="2756000" />
       <workItem from="1650452293230" duration="2834000" />
       <workItem from="1650532038825" duration="10000" />
+      <workItem from="1650533414975" duration="75000" />
+      <workItem from="1650546785106" duration="1013000" />
+      <workItem from="1650616331196" duration="1878000" />
+      <workItem from="1650694057135" duration="12239000" />
+      <workItem from="1650707884740" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="repair log and add util folder">
       <created>1647084913047</created>
@@ -269,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650454432230</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ssh error">
+      <created>1650533465965</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1650533465965</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +317,22 @@
     <MESSAGE value="fix server error" />
     <MESSAGE value="fix lexi bug,strange bug" />
     <MESSAGE value="add docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="add docs" />
+    <MESSAGE value="ssh error" />
+    <option name="LAST_COMMIT_MESSAGE" value="ssh error" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/lib/TinyStl/list.h</url>
+          <line>333</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
