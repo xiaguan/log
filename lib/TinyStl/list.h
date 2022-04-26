@@ -154,7 +154,7 @@ static inline void slist_add_head(struct slist_node *node,
 static inline void slist_add_tail(struct slist_node *node,
                                   struct slist_head *list)
 {
-    node->next = (struct slist_node *)0;
+    node->next = (struct slist_node *)nullptr;
     list->last->next = node;
     list->last = node;
 }
@@ -236,9 +236,16 @@ namespace su {
 #define m_entry(ptr, type)\
     ((type *)((char *)(type *)((ptr)) - (unsigned long long)(&((type *)nullptr)->node)))
 
+    /*
+     * 对该结构体的理解:或者说是对workflow list的理解
+     *  存了一个结构体指针，这个结构体大小刚好是一个指针的大小，
+     *  我们使用new 申请 __node内存的时候，已经该指针值的内存
+     *  然后我们将结构中的指针部分，交给workflow的head管理
+     */
     template<typename T>
     struct __node {
-        struct slist_node *node;
+        __node():node{nullptr}{}
+        struct slist_node node;
         T m_val;
     };
 
@@ -251,16 +258,19 @@ namespace su {
 
         void add_after_head(const T &t) {
             auto *newNode = new (__node<T>);
-            newNode->node = new slist_node;
             newNode->m_val = t;
             //SU_LOG_INFO(SU_LOG_ROOT()) << " address is "<<&(newNode->node)<<" "<<t;
-            slist_add_head((struct slist_node *) (&newNode->node), head);
+            slist_add_head(&newNode->node, head);
             //SU_LOG_INFO(SU_LOG_ROOT()) <<"head->next " << (head->first.next);
             m_sz++;
         }
 
         __node<T> *getPos(size_t pos) {
-            int n = 0;
+            if(pos >= m_sz){
+                SU_LOG_ERROR(SU_LOG_ROOT()) << "invalid pos " << pos << " list size = " << m_sz;
+                return nullptr;
+            }
+            size_t n = 0;
             struct slist_node *p;
             slist_for_each(p, head) {
                 if (n == pos) {
@@ -269,30 +279,28 @@ namespace su {
                 }
                 n++;
             }
-            SU_LOG_ERROR(SU_LOG_ROOT()) << "invalid pos " << pos << " list size = " << m_sz;
             return nullptr;
         }
 
-        void insert(size_t pos, const T &new_val) {
-            if (pos == 0) {
-                SU_LOG_ERROR(SU_LOG_ROOT()) << " slist::insert() : pos invalid";
-                return;
-            }
+        bool insert(size_t pos, const T &new_val) {
+            if(pos == m_sz) return false;
             auto pre = getPos(pos - 1);
             //std::cout <<pre->m_val << "  "<<(pre->node==nullptr) << " " <<" "<<std::endl;
             if (pre == nullptr) { ;
-                return;
+                return false;
             }
             auto *newNode = new (__node<T>);
-            newNode->node = new slist_node;
             newNode->m_val = new_val;
-            slist_add_after((struct slist_node *) (&newNode->node), (struct slist_node *) (&pre->node), head);
+            slist_add_after(&newNode->node,&pre->node,head);
             m_sz++;
+            return true;
         }
 
         void del(size_t pos) {
             auto pre = getPos(pos - 1);
-            slist_del_after(pre, head);
+            if(pre == nullptr) return;
+            m_sz--;
+            slist_del_after(&pre->node, head);
         }
 
         void test() {

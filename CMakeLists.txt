@@ -28,7 +28,6 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
-find_package(yaml-cpp REQUIRED)
 
 # 生成可执行文件，不同系统，不同的测试
 if(UNIX)

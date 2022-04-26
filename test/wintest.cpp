@@ -15,34 +15,25 @@ struct A{
     B b;
 };
 
+su::slist<int> prepare_for_list(std::initializer_list<int> ls){
+    su::slist<int> result;
+    for(auto i : ls){
+        result.add_after_head(i);
+    }
+    return result;
+}
+
 int main(){
+    su::slist<int> l1,l2;
+    for(int i = 1;i<=10;i++) l2.add_after_head(i);
+    l2.add_after_head(18);
+    l2.add_after_head(20);
+    l2.add_after_head(30);
 
-    su::__node<int>* n = new su::__node<int>;
-    n->node = new slist_node;
-    n->m_val = 100;
+    l1 = prepare_for_list({1, 3, 6, 10, 15, 16, 17, 18, 19, 20});
 
-    cout << &(n->node) <<endl;
-    cout << &(n) << endl;
-    cout << (unsigned long long )(&((su::__node<int>*)nullptr)->m_val) <<endl;
-    cout << sizeof (unsigned long long) << " "<<sizeof(&((su::__node<int>*)nullptr)->m_val) << endl;
-    cout << ((su::__node<int>*)((char *)(su::__node<int>*)(&n->node) - (unsigned long long)(&((su::__node<int>*)nullptr)->node))) << endl;
+    l1.dispaly();
+    l2.dispaly();
 
-    su::Timer timer;
-    std::list<int> list;
-    timer.start();
-    for(int j = 0;j<10;j++)
-        for(int i = 0;i<1e6;i++) list.push_back(i);
-    timer.end();
 
-    su::slist<int> m_list;
-    timer.start();
-    for(int j = 0;j<10;j++)
-        for(int i = 0;i<1e6;i++) m_list.add_after_head(i);
-    timer.end();
-
-    su::normal_list<int> n_list;
-    timer.start();
-    for(int j = 0;j<10;j++)
-        for(int i = 0;i<1e6;i++) n_list.push_back(i);
-    timer.end();
 }

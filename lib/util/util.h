@@ -40,7 +40,7 @@ namespace su{
 
     //打印数据的二进制形式
     template <typename T>
-    void print_in_two(T  t){
+    void print_in_two(const T&  t){
     char * ptr = (char *)&t;
     int n = sizeof(t);
     for(int i = 0;i<n;i++){

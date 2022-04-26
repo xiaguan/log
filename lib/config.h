@@ -279,7 +279,7 @@ namespace su {
                   const std::string &description = "") :
                 ConfigVarBase(name, description), m_val(val) {
         }
-
+·
         std::string toString() override {
             try {
                 return ToStr()(m_val);

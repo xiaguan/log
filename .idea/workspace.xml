@@ -5,8 +5,10 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="lib_test" targetName="client" />
       <config projectName="lib_test" targetName="test" />
       <config projectName="lib_test" targetName="logexample" />
+      <config projectName="lib_test" targetName="serv" />
       <config projectName="lib_test" targetName="su" />
     </generated>
   </component>
@@ -16,8 +18,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="add workflow list test">
+    <list default="true" id="bede090a-1261-42f3-8b3e-25df67f5e62c" name="Changes" comment="finish config system">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/TinyStl/list.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/TinyStl/list.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/util.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/util.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/wintest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/wintest.cpp" afterDir="false" />
     </list>
     <list id="cd1d6dd6-5317-46ff-9351-cea1412d1dab" name="Changes by 75108" comment="add docs" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +109,7 @@
       <recent name="J:\log" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.logexample">
+  <component name="RunManager" selected="CMake 应用程序.logexample">
     <configuration name="logexample" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lib_test" TARGET_NAME="test" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="lib_test" RUN_TARGET_NAME="test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -121,9 +131,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.logexample" />
-      <item itemvalue="CMake Application.su" />
-      <item itemvalue="CMake Application.test" />
+      <item itemvalue="CMake 应用程序.logexample" />
+      <item itemvalue="CMake 应用程序.su" />
+      <item itemvalue="CMake 应用程序.test" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -180,6 +190,14 @@
       <workItem from="1650694057135" duration="12239000" />
       <workItem from="1650707884740" duration="1513000" />
       <workItem from="1650710573499" duration="2000" />
+      <workItem from="1650728508699" duration="263000" />
+      <workItem from="1650728814125" duration="1262000" />
+      <workItem from="1650788484834" duration="5455000" />
+      <workItem from="1650875591636" duration="2174000" />
+      <workItem from="1650894675254" duration="295000" />
+      <workItem from="1650948359960" duration="626000" />
+      <workItem from="1650960680604" duration="495000" />
+      <workItem from="1650964973507" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="repair log and add util folder">
       <created>1647084913047</created>
@@ -318,17 +336,6 @@
     <MESSAGE value="ssh error" />
     <MESSAGE value="add workflow list test" />
     <option name="LAST_COMMIT_MESSAGE" value="add workflow list test" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/lib/TinyStl/list.h</url>
-          <line>333</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
