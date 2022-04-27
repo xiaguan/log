@@ -287,7 +287,7 @@ namespace su {
                 return true;
             }
             auto pre = getPos(pos - 1);
-            if (pre == nullptr) { ;
+            if (pre == nullptr) {
                 return false;
             }
             auto *newNode = new (__node<T>);
@@ -298,8 +298,9 @@ namespace su {
         }
 
         void del(size_t pos) {
+            if(pos >= m_sz) return;
             if(pos == 0){
-                head->first = *head->first.next;
+                slist_del_after(&head->first,head);
                 return;
             }
             auto pre = getPos(pos - 1);
@@ -316,10 +317,15 @@ namespace su {
         }
 
         void dispaly() {
-            for (size_t i = 0; i < m_sz; i++) {
-                std::cout << getPos(i)->m_val << " ";
+            auto p = new struct slist_node;
+            slist_for_each(p,head){
+                std::cout << m_entry(p,__node<int>)->m_val <<" ";
             }
             std::cout << std::endl;
+        }
+
+        auto getHead(){
+            return head;
         }
 
         size_t size() const { return m_sz; }
