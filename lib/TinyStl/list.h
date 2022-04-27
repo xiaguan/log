@@ -267,14 +267,13 @@ namespace su {
 
         __node<T> *getPos(size_t pos) {
             if(pos >= m_sz){
-                SU_LOG_ERROR(SU_LOG_ROOT()) << "invalid pos " << pos << " list size = " << m_sz;
+                std::cerr <<"invalid pos : "<<pos <<std::endl;
                 return nullptr;
             }
             size_t n = 0;
             struct slist_node *p;
             slist_for_each(p, head) {
                 if (n == pos) {
-                    //SU_LOG_INFO(SU_LOG_ROOT())<< m_entry(p,__node<int>);// <<" "<<m_entry(ps,__node<int>)->m_val ;
                     return m_entry(p, __node<int>);
                 }
                 n++;
@@ -283,9 +282,11 @@ namespace su {
         }
 
         bool insert(size_t pos, const T &new_val) {
-            if(pos == m_sz) return false;
+            if (pos == 0){
+                add_after_head(new_val);
+                return true;
+            }
             auto pre = getPos(pos - 1);
-            //std::cout <<pre->m_val << "  "<<(pre->node==nullptr) << " " <<" "<<std::endl;
             if (pre == nullptr) { ;
                 return false;
             }
@@ -297,6 +298,10 @@ namespace su {
         }
 
         void del(size_t pos) {
+            if(pos == 0){
+                head->first = *head->first.next;
+                return;
+            }
             auto pre = getPos(pos - 1);
             if(pre == nullptr) return;
             m_sz--;
