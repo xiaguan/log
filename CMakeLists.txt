@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # set(CMAKE_CXX_FLAGS -v)
 
-#set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Release)
 
 project(lib_test)
 
@@ -33,7 +33,9 @@ find_package(Threads REQUIRED)
 if(UNIX)
     find_package(yaml-cpp REQUIRED)
     add_executable(test ${PROJECT_SOURCE_DIR}/test/test.cpp)
+    add_executable(config ${PROJECT_SOURCE_DR}/test/test_config.cpp)
     target_link_libraries(test PUBLIC su yaml-cpp)
+    target_link_directories(config PUBLIC su yaml-cpp)
 elseif(WIN32)
     add_executable(test ${PROJECT_SOURCE_DIR}/test/wintest.cpp)
     target_link_libraries(test PUBLIC su)
