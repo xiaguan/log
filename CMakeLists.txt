@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # set(CMAKE_CXX_FLAGS -v)
 
-set(CMAKE_BUILD_TYPE Release)
 
 project(lib_test)
 
@@ -15,6 +14,8 @@ if(UNIX)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib/TinyStl LIB_SRCS)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib/util LIB_SRCS)
     add_library(su OBJECT ${LIB_SRCS})
+    target_include_directories(su PRIVATE ${CMAKE_SOURCE_DIR}/lib)
+    install(TARGETS su LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 elseif(WIN32)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib/TinyStl LIB_SRCS)
     aux_source_directory(${PROJECT_SOURCE_DIR}/lib/util LIB_SRCS)
@@ -33,16 +34,17 @@ find_package(Threads REQUIRED)
 if(UNIX)
     find_package(yaml-cpp REQUIRED)
     add_executable(test ${PROJECT_SOURCE_DIR}/test/test.cpp)
-    add_executable(config ${PROJECT_SOURCE_DR}/test/test_config.cpp)
+    add_executable(config ${PROJECT_SOURCE_DIR}/test/test_config.cpp)
     target_link_libraries(test PUBLIC su yaml-cpp)
-    target_link_directories(config PUBLIC su yaml-cpp)
+    target_link_libraries(config PUBLIC su yaml-cpp)
+
+    add_executable(zipper ${PROJECT_SOURCE_DIR}/done_srcs/mytest/main.cpp ${PROJECT_SOURCE_DIR}/done_srcs/mytest/Zipper.cpp)
+    target_link_libraries(zipper Threads::Threads su yaml-cpp)
 elseif(WIN32)
     add_executable(test ${PROJECT_SOURCE_DIR}/test/wintest.cpp)
     target_link_libraries(test PUBLIC su)
 endif()
 
 
-
-
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)

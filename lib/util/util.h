@@ -51,30 +51,25 @@ namespace su{
     std::cout << '\n';
     }
 
-    // time counter
-    class Timer{
-        public:
-        Timer() = default;
-        Timer(const Timer & other) = delete;
-        
-        //start the clock
-        void start() noexcept {
-            begin = std::chrono::high_resolution_clock::now();
-        }
-
-        // cout the result
-        void end(){
-            auto end = std::chrono::high_resolution_clock::now();
-            auto result = std::chrono::duration<double,std::ratio<1,1000>>(end-begin);
-            std::cout <<"Timer live for "<<result.count() <<" ms"<<std::endl;
-        }
-
-
-        private:
-        decltype(std::chrono::high_resolution_clock::now()) begin;
-    };
+   
 
     unsigned long long GetThreadId();
 }
+
+class Timer{
+public:
+    Timer(const std::string & name ="Timer"):m_name(name){}
+    void start() noexcept {
+        begin = std::chrono::high_resolution_clock::now();
+    }
+    void end(){
+        auto end = std::chrono::high_resolution_clock::now();
+        auto result = std::chrono::duration<double,std::ratio<1,1000>>(end-begin);
+        std::cout <<m_name<<" live for "<<result.count() <<" ms"<<std::endl;
+    }
+private:
+    std::string m_name;
+    decltype(std::chrono::high_resolution_clock::now()) begin;
+};
 
 #endif //LOG_FUN_H

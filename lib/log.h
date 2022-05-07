@@ -20,6 +20,7 @@
 #include <iomanip>
 #include <thread>
 #include <mutex>
+
 #include "util/util.h"
 #include "util/singleton.h"
 
@@ -50,6 +51,9 @@ SU_LOG_LEVEL(logger,su::log::Level::INFO)
 
 #define SU_LOG_ROOT() su::log::LoggerMgr::GetInstance()->getRoot()
 
+#define SYLAR_LOG_NAME(name) sylar::LoggerMgr::GetInstance()->getLogger(name)
+
+
 
 namespace su{
     namespace log {
@@ -61,7 +65,8 @@ namespace su{
             ERROR = 1,
             INFO = 2,
             FATAL = 3,
-            WARN = 4
+            WARN = 4,
+            UNKNOW = 5
         };
 
         std::string ToString(Level level);
@@ -203,7 +208,7 @@ namespace su{
         public:
             typedef std::shared_ptr<FileOutputAppender> ptr;
 
-            explicit FileOutputAppender(std::string name);
+            explicit FileOutputAppender(const std::string& filename);
 
             void output_log(Event::ptr event) override;
 
@@ -237,7 +242,9 @@ namespace su{
             //设置格式
             void set_fmt(Formatter::ptr new_fmt);
 
-            std::string get_name() { return m_name; }
+            std::string get_name() const { return m_name; }
+
+            Formatter::ptr get_fmt() const {return m_fmt;}
 
         private:
             std::vector<Event::ptr> m_events;  //只用存指针，不存它的全部内容

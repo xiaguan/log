@@ -4,10 +4,9 @@
 
 
 #include "log.h"
-
 #include <memory>
 #include <utility>
-
+#include "config.h"
 
 namespace su{
     namespace log{
@@ -303,7 +302,7 @@ namespace su{
             return in.is_open();
         }
 
-        FileOutputAppender::FileOutputAppender(std::string name):m_file_name(std::move(name)) {
+        FileOutputAppender::FileOutputAppender(const std::string& filename):m_file_name(std::move(filename)) {
             m_filestream.open(m_file_name);
             if(!m_filestream.is_open()){
                 if(!reopen()){
@@ -375,11 +374,168 @@ namespace su{
 
         std::shared_ptr<Logger> LoggerManager::getLogger(const std::string &name) {
             auto it = m_loggers.find(name);
-            return it == m_loggers.end()?m_root:it->second;
+            if(it != m_loggers.end()){
+                return it->second;
+            }
+            Logger::ptr new_logger(new Logger(name));
+            m_loggers[name] = new_logger;
+            return new_logger;
         }
 
-        void LoggerManager::init() {
+        struct log_appender_config{
+            // 0: StdOutAppender 1 : FileOutAppender 
+            int type;
+            Level level{Level::UNKNOW};
+            std::string appender_fmt;
+            std::string filename;
 
-        }
+            bool operator==(const log_appender_config& rhs) const{
+                return type == rhs.type &&
+                level == rhs.level && appender_fmt == rhs.appender_fmt
+                && filename == rhs.filename;
+            }
+        };
+
+        struct log_logger_config{
+            std::string m_name;
+            std::vector<log_appender_config> m_appenders;
+            std::string m_fmt;
+
+            bool operator==(const log_logger_config & rhs) const{
+                return m_name == rhs.m_name && m_fmt == rhs.m_fmt
+                && m_appenders == rhs.m_appenders;
+            }
+
+            bool operator<(const log_logger_config & rhs) const {
+                return m_name < rhs.m_name;
+            }
+
+            bool isvaild() const {
+                return !m_name.empty();
+            }
+        };
     }
+    
+
+    static inline log::Level getLevel(const std::string & s){
+        using namespace log;
+        if(s =="INFO"){
+            return Level::INFO;
+        }
+        if(s == "DEBUG"){
+            return Level::DEBUG;
+        }
+        if(s=="ERROR"){
+            return Level::ERROR;
+        }
+        if(s == "FATAL"){
+            return Level::FATAL;
+        }
+        if(s == "WARN"){
+            return Level::WARN;
+        }
+        return Level::UNKNOW;
+    }
+    template <>
+    class LexicalCast<std::string,log::log_logger_config>{
+        public:
+         log::log_logger_config operator()(const std::string & s){
+            YAML::Node log_config_node = YAML::Load(s);
+            log::log_logger_config log_config;
+            if(!log_config_node["name"].IsDefined()){
+                throw std::logic_error("log_config_node-name doesn't exist ! ");
+            }
+            log_config.m_name = log_config_node["name"].as<std::string>();
+            if(!log_config_node["fmt"].IsDefined()){
+                log_config.m_fmt = "d{%Y-%m-%d %H:%M:%S}%T%t%%T[%p]%T[%c]%T%f:%l%T%m%n";
+            }else{
+                log_config.m_fmt = log_config_node["fmt"].as<std::string>();
+            }
+
+            if(log_config_node["appenders"].IsDefined()){
+            auto appender_node = log_config_node["appenders"];
+            for(auto appender : appender_node){
+                log::log_appender_config appender_config;
+
+                if(!appender["level"].IsDefined()){
+                    appender_config.level = log::Level::UNKNOW;
+                }else{
+                    appender_config.level = getLevel(appender["level"].as<std::string>());
+                }                
+                
+                if(!appender["type"].IsDefined()){
+                    throw std::logic_error("appender type is not defined !");
+                }
+                auto type = appender["type"].as<std::string>();
+                if(type == "StdOutAppender"){
+                    appender_config.type = 0;
+                }else if(type == "FileOutAppender"){
+                    appender_config.type = 1;
+                    if(!appender["filename"].IsDefined()){
+                        throw std::logic_error("FileOutAppender output filename doesn't exists");
+                    }else{
+                        appender_config.filename = appender["filename"].as<std::string>();
+                    }
+                }else{
+                    throw std::logic_error("appender type is error " + type);
+                }
+            }
+            }
+
+            return log_config;
+         }
+
+    };
+
+    template<>
+    class LexicalCast<log::log_logger_config,std::string>{
+        public:
+    std::string operator()(const log::log_logger_config& log_config){
+        std::string result;
+        return result;
+    }
+    };
+
+   su::ConfigVar<std::set<log::log_logger_config> >::ptr g_log_defines = 
+        su::Config::Lookup("logs",std::set<log::log_logger_config>(),"logs config");
+
+    struct log_config_initer{
+        log_config_initer(){
+            g_log_defines->addListener([](const std::set<log::log_logger_config> & old_value,
+            const std::set<log::log_logger_config> & new_value){
+                SU_LOG_INFO(SU_LOG_ROOT()) <<"log system config changed";
+                for(auto &value : new_value){
+                    auto it = old_value.find(value);
+                    log::Logger::ptr new_logger;
+                    if(it == old_value.end()){
+                        // doesn't exist before
+                        new_logger = std::make_shared<log::Logger>(value.m_name);
+                    }else{
+                        continue;
+                    }
+                    new_logger->set_fmt(log::Formatter::ptr(new log::Formatter(value.m_fmt)));
+                    for(auto &appender : value.m_appenders){
+                        log::Formatter::ptr new_fmt;
+                        if(appender.appender_fmt.empty()){
+                            new_fmt = new_logger->get_fmt();
+                        }else{
+                            new_fmt = std::make_shared<log::Formatter>(appender.appender_fmt);
+                        }
+                        log::Appender::ptr new_appender;
+                        if(appender.type == 0){
+                            // StdOutAppender
+                            new_appender = std::make_shared<log::StdOutputAppender>();
+                            new_appender->set_format(new_fmt);
+                        }else if(appender.type == 1){
+                            new_appender = std::make_shared<log::FileOutputAppender>(appender.filename);
+                            new_appender->set_level(appender.level);
+                            new_appender->set_format(new_fmt);
+                        }
+                        new_logger->add_appender(new_appender);
+                    }
+                }
+            });
+        }
+    };
+    
 }
